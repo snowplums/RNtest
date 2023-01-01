@@ -2,8 +2,10 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
 
 import Navbar from "./src/components/Navbar";
+import HomeScreen from "./src/pages/HomeScreen";
 
 export default function App() {
   return (

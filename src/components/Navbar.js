@@ -8,14 +8,14 @@ import UserSettings from "../pages/UserSettings";
 import PracticeScreen from "../pages/PracticeScreen";
 
 const Navbar = () => {
-  
+  return(
     <Bar.Navigator>
       <Bar.Screen name="HomeScreen" component={HomeScreen} />
       <Bar.Screen name="UserScreen" component={UserScreen} />
       <Bar.Screen name="Practice" component={PracticeScreen} />
       <Bar.Screen name="UserSettings" component={UserSettings} />
     </Bar.Navigator>
-  
+  );
 };
 
 const styles = StyleSheet.create({
