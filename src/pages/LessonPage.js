@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
 
 const LessonPage = () => {
   return (
-    <View>
-      <Text>Lessons: </Text>
-    </View>
+    <ScrollView>
+      <Text>L1</Text>
+    </ScrollView>
   );
 };
 

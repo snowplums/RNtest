@@ -1,18 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
 
 import Navbar from "./src/components/Navbar";
 import HomeScreen from "./src/pages/HomeScreen";
+import RootNavigator from "./src/Navigator/RootNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Navbar />
-      <StatusBar />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Navbar />
+      </NavigationContainer>
+    </>
   );
 }
 

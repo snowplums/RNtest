@@ -1,18 +1,46 @@
 import React from "react";
-//import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, Button, StyleSheet } from "react-native";
 
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import LessonPage from "./LessonPage";
+const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({ navigation }) => {
-  const { nav } = this.props.navigation;
+  return (
+    <Stack.Navigator
+      initialRouteName="HomeView"
+      screenOptions={{
+        headerBackTitleVisible: false,
+        cardStyle: { backgroundColor: "#FFFFFF" },
+        cardShadowEnabled: false,
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="HomeView" component={HomeView} />
+      <Stack.Screen name="LessonPage" component={LessonPage} />
+    </Stack.Navigator>
+  );
+};
 
+const HomeView = ({ navigation }) => {
   return (
     <View>
       <Text>Home Screen</Text>
-      <Button title="View Lessons" onPress={() => navigate("LessonPage")} />
+      <Button
+        title="View List"
+        onPress={() => navigation.navigate("LessonPage")}
+      />
+      <Button
+        title="View List"
+        onPress={() => navigation.navigate("LessonPage")}
+      />
     </View>
   );
+};
+
+const LastLesson = () => {
+  return <></>;
 };
 
 export default HomeScreen;

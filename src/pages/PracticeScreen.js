@@ -1,35 +1,34 @@
 import React from "react";
 
-import { View, Text, Image, Button, StyleSheet } from "react-native";
+import { View, Text, Image, Button, StyleSheet, Pressable } from "react-native";
 
 import data from "../data/Practice.json";
 
-const MyImage = require('../images/temp.png');
+const MyImage = require("../images/temp.png");
 
 const PracticeScreen = ({ navigation }) => {
   return (
     <View>
       {data.map((activity) => (
-        <>
-       <Text>{activity.title}</Text> 
-       <Image source={activity.image} />
-       </>
-        
-     ))}
-      </ View>
+        <Cell
+          title={activity.title}
+          image={activity.image}
+          key={activity.title}
+        />
+      ))}
+    </View>
   );
 };
 
 export default PracticeScreen;
 
-
 const Cell = (props) => {
-  return(
-    <>
-    <Text>{props.title}</Text>
-    <Image style={cellStyle} source={props.image} size={100} color="red" />
-        </>
-    );
+  return (
+    <Pressable onPress={}>
+      <Text>{props.title}</Text>
+      <Image style={cellStyle} source={props.image} size={100} color="red" />
+    </Pressable>
+  );
 };
 
 
@@ -45,10 +44,9 @@ const pageStyle = StyleSheet.create({
 
 const cellStyle = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "8fcbbc"
-  }
-})
-
+    backgroundColor: "8fcbbc",
+  },
+});
