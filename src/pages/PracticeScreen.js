@@ -22,6 +22,7 @@ const PracticeScreen = ({ navigation }) => {
 
 export default PracticeScreen;
 
+<<<<<<< Updated upstream
 const Cell = (props) => {
   return (
     <Pressable onPress={}>
@@ -37,6 +38,8 @@ const Cell = (props) => {
 
 
 
+=======
+>>>>>>> Stashed changes
 const pageStyle = StyleSheet.create({
   container: {
     flex: 1,
