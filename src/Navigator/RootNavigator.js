@@ -7,6 +7,7 @@ import UserScreen from "../pages/UserScreen";
 import UserSettings from "../pages/UserSettings";
 import PracticeScreen from "../pages/PracticeScreen";
 import Navbar from "../components/Navbar";
+import LessonPage from "../pages/LessonPage";
 
 const Stack = createStackNavigator();
 const Bar = createBottomTabNavigator();
@@ -26,8 +27,9 @@ const RootNavigator = () => {
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="UserScreen" component={UserScreen} />
-      <Stack.Screen name="Practice" component={PracticeScreen} />
+      <Stack.Screen name="PracticePage" component={PracticeScreen} />
       <Stack.Screen name="Navbar" component={Navbar} />
+      <Stack.Screen name="Lesson" component={LessonPage} />
     </Stack.Navigator>
   );
 };

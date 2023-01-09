@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
 
-const LessonPage = () => {
+const LessonPage = (props) => {
   return (
     <ScrollView>
-      <Text>L1</Text>
+      <View></View>
     </ScrollView>
   );
 };
