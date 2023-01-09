@@ -33,6 +33,10 @@ const Cell = (props) => {
 
 
 
+
+
+
+
 const pageStyle = StyleSheet.create({
   container: {
     flex: 1,
