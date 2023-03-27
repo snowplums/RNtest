@@ -1,17 +1,28 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-import LessonPage from "./LessonPage";
-const Stack = createNativeStackNavigator();
+import { lessons } from "../data/Lessons.json";
 
-import lessons from "../data/Lessons.json";
 import { FlatList, TouchableHighlight } from "react-native-gesture-handler";
 
 const HomeScreen = (props) => {
   const { navigation } = props;
+
+  const LastLesson = (lesson) => {
+    navigation.navigate("LessonPage", { lesson });
+  };
+
+  const renderLessons = ({ lesson }) => (
+    <TouchableHighlight onPress={() => LastLesson(lesson)}>
+      <View>
+        <Text></Text>
+      </View>
+    </TouchableHighlight>
+  );
+
   return (
     <View>
-      <Button onPress={LastLesson()} title={Continue} />
+      <Button onPress={LastLesson()} title={"Continue"} />
       <FlatList
         vertical
         showsVerticalScrollIndicator={false}
@@ -23,14 +34,6 @@ const HomeScreen = (props) => {
     </View>
   );
 };
-
-const LastLesson = (lesson) => {
-  navigation.navigate("LessonPage", { lesson });
-};
-
-const renderLessons = ({ lesson }) => (
-  <TouchableHighlight onPress={() => LastLesson(lesson)}></TouchableHighlight>
-);
 
 export default HomeScreen;
 

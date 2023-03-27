@@ -1,6 +1,5 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import HomeScreen from "../pages/HomeScreen";
 import UserScreen from "../pages/UserScreen";
@@ -10,7 +9,6 @@ import Navbar from "../components/Navbar";
 import LessonPage from "../pages/LessonPage";
 
 const Stack = createStackNavigator();
-const Bar = createBottomTabNavigator();
 
 const getHeaderTitle = (route) => {
   const routeName = route.state;

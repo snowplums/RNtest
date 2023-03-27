@@ -22,24 +22,15 @@ const PracticeScreen = ({ navigation }) => {
 
 export default PracticeScreen;
 
-<<<<<<< Updated upstream
 const Cell = (props) => {
   return (
-    <Pressable onPress={}>
+    <Pressable onPress={() => {}}>
       <Text>{props.title}</Text>
       <Image style={cellStyle} source={props.image} size={100} color="red" />
     </Pressable>
   );
 };
 
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 const pageStyle = StyleSheet.create({
   container: {
     flex: 1,
