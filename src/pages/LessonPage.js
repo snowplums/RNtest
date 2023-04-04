@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
 
+import { Lessons } from "../data/Lessons";
+
 const LessonPage = (props) => {
   const { navigtion, route } = props;
 
@@ -8,7 +10,9 @@ const LessonPage = (props) => {
 
   return (
     <ScrollView>
-      <View></View>
+      <View>
+        <Text>Bozo</Text>
+      </View>
     </ScrollView>
   );
 };

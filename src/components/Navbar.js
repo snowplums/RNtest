@@ -18,13 +18,7 @@ const Navbar = () => {
       }}
       initialRouteName="HomeScreen"
     >
-      <Bar.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
+      <Bar.Screen name="HomeScreen" component={HomeScreen} />
       <Bar.Screen name="UserScreen" component={UserScreen} />
       <Bar.Screen name="Practice" component={PracticeScreen} />
       <Bar.Screen name="UserSettings" component={UserSettings} />

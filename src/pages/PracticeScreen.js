@@ -2,14 +2,14 @@ import React from "react";
 
 import { View, Text, Image, Button, StyleSheet, Pressable } from "react-native";
 
-import data from "../data/Practice.json";
+import { Practice } from "../data/Practice.js";
 
 const MyImage = require("../images/temp.png");
 
 const PracticeScreen = ({ navigation }) => {
   return (
     <View>
-      {data.map((activity) => (
+      {Practice.map((activity) => (
         <Cell
           title={activity.title}
           image={activity.image}
