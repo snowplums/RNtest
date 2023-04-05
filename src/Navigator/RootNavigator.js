@@ -28,7 +28,7 @@ const RootNavigator = () => {
       initialRouteName="HomeScreen"
     >
       <Bar.Screen name="HomeScreen" component={HomeNavigator} />
-      <Bar.Screen name="UserScreen" component={UserScreen} />
+      <Bar.Screen name="UserScreen" component={LessonNavigator} />
       <Bar.Screen name="Practice" component={PracticeScreen} />
       <Bar.Screen name="UserSettings" component={UserSettings} />
     </Bar.Navigator>
@@ -46,6 +46,37 @@ const HomeNavigator = () => {
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
+      <Stack.Screen name="PracticePage" component={PracticeScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const LessonNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        //headerShown: false,
+        headerBackTitleVisible: false,
+      }}
+      initialRouteName="HomeScreen"
+    >
+      <Stack.Screen name="HomeScreen" component={LessonPage} />
+      <Stack.Screen name="LessonPage" component={PracticeScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const PracticeNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        //headerShown: false,
+        headerBackTitleVisible: false,
+      }}
+      initialRouteName="HomeScreen"
+    >
+      <Stack.Screen name="HomeScreen" component={PracticeScreen} />
+      <Stack.Screen name="LessonPage" component={HomeScreen} />
     </Stack.Navigator>
   );
 };
