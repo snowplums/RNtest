@@ -1,10 +1,12 @@
 export const Lessons = [
   {
-    LessonId: 1,
-    name: "Lesson1",
+    lessonId: 1,
+    title: "Lesson1",
+    content: "Hello welcome to lesson 1 well ",
   },
   {
-    LessonId: 2,
-    name: "Lesson2",
+    lessonId: 2,
+    title: "Lesson2",
+    content: "Hello welcome to lesson 2",
   },
 ];

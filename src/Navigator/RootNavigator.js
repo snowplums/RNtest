@@ -5,7 +5,6 @@ import HomeScreen from "../pages/HomeScreen";
 import UserScreen from "../pages/UserScreen";
 import UserSettings from "../pages/UserSettings";
 import PracticeScreen from "../pages/PracticeScreen";
-import Navbar from "../components/Navbar";
 import LessonPage from "../pages/LessonPage";
 
 const Stack = createStackNavigator();

@@ -6,8 +6,8 @@ import { lessons } from "../data/Lessons";
 import { FlatList, TouchableHighlight } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
-  const LastLesson = (lesson) => {
-    navigation.navigate("HomeNavigator", { screen: "LessonPage" });
+  const LastLesson = () => {
+    navigation.navigate("Lessons", { screen: "LessonPage" });
   };
 
   const renderLessons = ({ lesson }) => (

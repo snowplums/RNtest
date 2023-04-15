@@ -4,8 +4,6 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Navbar from "./src/components/Navbar";
-import HomeScreen from "./src/pages/HomeScreen";
 import RootNavigator from "./src/Navigator/RootNavigator";
 
 export default function App() {
