@@ -5,6 +5,7 @@ import HomeScreen from "../pages/HomeScreen";
 import UserScreen from "../pages/UserScreen";
 import UserSettings from "../pages/UserSettings";
 import PracticeScreen from "../pages/PracticeScreen";
+import LessonScreen from "../pages/LessonScreen";
 import LessonPage from "../pages/LessonPage";
 
 const Stack = createStackNavigator();
@@ -24,7 +25,7 @@ const RootNavigator = () => {
         cardShadowEnabled: false,
         headerShown: false,
       }}
-      initialRouteName="HomeScreen"
+      initialRouteName="Home"
     >
       <Bar.Screen name="Home" component={HomeNavigator} />
       <Bar.Screen name="Lessons" component={LessonNavigator} />
@@ -44,7 +45,7 @@ const HomeNavigator = () => {
       initialRouteName="HomeScreen"
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="LessonPage" component={LessonPage} />
+      <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="PracticePage" component={PracticeScreen} />
     </Stack.Navigator>
   );
@@ -57,8 +58,9 @@ const LessonNavigator = () => {
         //headerShown: false,
         headerBackTitleVisible: false,
       }}
-      initialRouteName="LessonPage"
+      initialRouteName="LessonScreen"
     >
+      <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
       <Stack.Screen name="PraticePage" component={PracticeScreen} />
     </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,11 +8,9 @@ import RootNavigator from "./src/Navigator/RootNavigator";
 
 export default function App() {
   return (
-    <>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
   );
 }
 

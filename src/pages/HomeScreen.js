@@ -7,7 +7,7 @@ import { FlatList, TouchableHighlight } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
   const LastLesson = () => {
-    navigation.navigate("Lessons", { screen: "LessonPage" });
+    navigation.navigate("Lessons", { screen: "LessonScreen" });
   };
 
   const renderLessons = ({ lesson }) => (
