@@ -18,7 +18,7 @@ export const Lessons = [
     content: (
       <>
         <Text>Lesson2 here...</Text>
-        <Text>Hello blahblah lbaafaefaefae</Text>
+        <Text>Hello world blahblah lbaafaefaefae</Text>
       </>
     ),
   },
