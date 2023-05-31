@@ -1,6 +1,14 @@
 import React from "react";
 
-import { View, Text, Image, Button, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Button,
+  StyleSheet,
+  Pressable,
+  FlatList,
+} from "react-native";
 
 import { Practice } from "../data/Practice.js";
 
@@ -18,6 +26,7 @@ const PracticeScreen = (props) => {
       <Pressable onPress={() => onPressPractice(item)}>
         <View>
           <Text>{item.title}</Text>
+          <Image source={item.image} alt="MyImage" />
         </View>
       </Pressable>
     );
