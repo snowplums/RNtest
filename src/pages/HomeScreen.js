@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
     <View>
       <Button
         onPress={() => {
-          navigation.navigate("Lessons", { screen: "LessonPage" });
+          navigation.navigate("Lessons", { screen: "LessonScreen" });
         }}
         title={"Test"}
       />
