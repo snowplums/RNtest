@@ -30,7 +30,7 @@ const RootNavigator = () => {
       <Bar.Screen name="Home" component={HomeNavigator} />
       <Bar.Screen name="Lessons" component={LessonNavigator} />
       <Bar.Screen name="Practice" component={PracticeNavigator} />
-      <Bar.Screen name="Settings" component={UserSettings} />
+      <Bar.Screen name="Settings" component={SettingsNavigator} />
     </Bar.Navigator>
   );
 };
@@ -62,7 +62,6 @@ const LessonNavigator = () => {
     >
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
-      <Stack.Screen name="PraticePage" component={PracticeScreen} />
     </Stack.Navigator>
   );
 };
@@ -78,6 +77,20 @@ const PracticeNavigator = () => {
     >
       <Stack.Screen name="PracticePage" component={PracticeScreen} />
       <Stack.Screen name="HomePage" component={HomeScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const SettingsNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        //headerShown: false,
+        headerBackTitleVisible: false,
+      }}
+      initialRouteName="UserSettings"
+    >
+      <Stack.Screen name="Settings" component={UserSettings} />
     </Stack.Navigator>
   );
 };
