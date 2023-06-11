@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, FlatList, Text, View, TouchableOpacity, Image } from "react-native";
+import { FlatList, Text, View, TouchableHighlight, Image } from "react-native";
 
 import { Lessons } from "../data/Lessons";
 
@@ -15,47 +15,16 @@ const LessonScreen = (props) => {
 
   const renderLessons = ({ item }) => {
     return (
-      <View>
-        <TouchableOpacity
-          onPress={() => onPressLesson(item)}
-          style={styles.button}
-        >
-          <Text
-          style={[styles.LTxt, 
-                item.lessonId >= 10 && styles.LTxtTwo, 
-                item.lessonId >= 100 && styles.LTxtThree]}
-          >
-            {item.title}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableHighlight
+        underlayColor="rgba(73,182,77,0.9)"
+        onPress={() => onPressLesson(item)}
+      >
+        <View>
+          <Text>{item.title}</Text>
+        </View>
+      </TouchableHighlight>
     );
   };
-
-  const styles = StyleSheet.create ({
-    LTxt: {
-      fontSize: 40,
-      fontWeight: '700',
-      color: 'magenta',
-      marginLeft: '15%'
-    },
-    LTxtTwo: {
-      marginLeft:'12.5%'
-    },
-    LTxtThree: {
-      marginLeft:'10%'
-    },
-    button: {
-      width: 340,
-      paddingVertical: 6,
-      borderWidth: 2,
-      borderRadius: 20,
-      borderColor: 'red',
-      backgroundColor: 'gold',
-      alignSelf: 'center',
-      marginTop: 9,
-    }
-  });
 
   return (
     <View>

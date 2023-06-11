@@ -1,35 +1,49 @@
 import React from "react";
 
-import { View, Text, Image, Button, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Button,
+  StyleSheet,
+  Pressable,
+  FlatList,
+} from "react-native";
 
-import data from "../data/Practice.json";
+import { Practice } from "../data/Practice.js";
 
 const MyImage = require("../images/temp.png");
 
-const PracticeScreen = ({ navigation }) => {
+const PracticeScreen = (props) => {
+  const { navigation, route } = props;
+  const onPressPractice = (practice) => {
+    navigation.navigate("PracticePage", { practice });
+  };
+
+  //Create a render function for the FlatList
+  const renderPractice = ({ item }) => {
+    return (
+      <Pressable onPress={() => onPressPractice(item)}>
+        <View>
+          <Text>{item.title}</Text>
+          <Image source={item.image} alt="MyImage" />
+        </View>
+      </Pressable>
+    );
+  };
+
   return (
     <View>
-      {data.map((activity) => (
-        <Cell
-          title={activity.title}
-          image={activity.image}
-          key={activity.title}
-        />
-      ))}
+      <FlatList
+        data={Practice}
+        renderItem={renderPractice}
+        keyExtractor={(item) => `${item.activityId}`}
+      />
     </View>
   );
 };
 
 export default PracticeScreen;
-
-const Cell = (props) => {
-  return (
-    <Pressable onPress={() => {}}>
-      <Text>{props.title}</Text>
-      <Image style={cellStyle} source={props.image} size={100} color="red" />
-    </Pressable>
-  );
-};
 
 const pageStyle = StyleSheet.create({
   container: {

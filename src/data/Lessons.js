@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-export const Lessons = [
-  {
-    LessonId: 1,
-    name: "Lesson1",
-  },
-  {
-    LessonId: 2,
-    name: "Lesson2",
-=======
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
@@ -89,6 +79,6 @@ export const Lessons = [
         <Text>Hello world blahblah lbaafaefaefae</Text>
       </>
     ),
->>>>>>> Stashed changes
+
   },
 ];

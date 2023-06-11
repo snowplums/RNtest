@@ -1,18 +1,4 @@
 import React from "react";
-<<<<<<< Updated upstream
-import { View, Text, Button, StyleSheet, ScrollView } from "react-native";
-
-const LessonPage = (props) => {
-  const { navigtion, route } = props;
-
-  const lesson = route.params?.lesson;
-
-  return (
-    <ScrollView>
-      <View></View>
-    </ScrollView>
-  );
-=======
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Lessons } from "../data/Lessons";
@@ -78,7 +64,7 @@ const LessonPage = ({ navigation, route }) => {
           </Text>
         </TouchableOpacity>
     </View>;
->>>>>>> Stashed changes
+
 };
 
 export default LessonPage;
