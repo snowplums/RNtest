@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView , Dimensions} from "react-native";
 
 import { Lessons } from "../data/Lessons";
 
 const styles = StyleSheet.create ({
   Button: {
     //method of positioning is kind of stupid
-    position: 'fixed',
+    position: 'absolute',
     paddingHorizontal: 6,
     borderWidth: 2,
     borderRadius: 5,
@@ -16,12 +16,12 @@ const styles = StyleSheet.create ({
   back: {
     width: 105,
     left: 15,
-    top: 560
+    bottom:0
   },
   next: {
     width: 100,
     left: 300,
-    top: 510
+    bottom: 0
   },
   off: {
     backgroundColor: 'lightgray'
@@ -41,7 +41,8 @@ const LessonPage = ({ navigation, route }) => {
     navigation.navigate("LessonPage", { lesson });
   };
 //must set maximum lesson id value for the next button ------------
-  return <View>
+  return (
+  <ScrollView contentContainerStyle={{paddingBottom: 80}}>
     {content}
         <TouchableOpacity
           onPress={() => (lessonId > 1) ? onPressNext(Lessons[lessonId-2]) : console.log('Unable to go back.')}
@@ -54,7 +55,7 @@ const LessonPage = ({ navigation, route }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => (lessonId < 3) ? onPressNext(Lessons[lessonId]) : console.log('Unable to go next.')}
+          onPress={() => (lessonId < Lessons.length) ? onPressNext(Lessons[lessonId]) : console.log('Unable to go next.')}
           style={[styles.Button, styles.next, lessonId == 3 && styles.off]}
         >
           <Text
@@ -63,8 +64,8 @@ const LessonPage = ({ navigation, route }) => {
             Next
           </Text>
         </TouchableOpacity>
-    </View>;
-
+    </ScrollView> 
+    );
 };
 
 export default LessonPage;
