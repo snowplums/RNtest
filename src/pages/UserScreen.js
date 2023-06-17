@@ -1,12 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, Switch, StyleSheet } from "react-native";
 
 const UserScreen = ({ navigation }) => {
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
+
     <View>
-      <Text>User Screen</Text>
+      <Text style={styles.bigTxt}>Settings</Text>
+      <View style={styles.setting}>
+        <Text style={styles.setText}>Dark Mode:</Text>
+        <Switch
+          trackColor={{false: '#777777', true: '#81b0ff'}}
+          thumbColor='#ffffff'
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+          style={styles.switch}
+        />
+      </View>
     </View>
+    
   );
 };
 
@@ -19,4 +36,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#8fcbbc",
   },
+  bigTxt: {
+    fontSize: 50,
+    fontWeight: '700',
+    textAlign: 'center',
+    fontFamily: 'Verdana',
+    marginTop: '5%',
+    marginBottom: '10%'
+  },
+  setText: {
+    fontSize: 35,
+    fontWeight: '300',
+    marginRight: 15
+  },
+  setting: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: 340,
+    height: 50
+  },
+  switch: {
+
+  }
 });
