@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import { Practice } from "../data/Practice.js";
+import MultipleChoice from "../components/MultipleChoice.js";
 
 const MyImage = require("../images/temp.png");
 
@@ -31,16 +32,22 @@ const PracticeScreen = (props) => {
       </Pressable>
     );
   };
-
+  /*
   return (
     <View>
       <FlatList
         data={Practice}
         renderItem={renderPractice}
         keyExtractor={(item) => `${item.activityId}`}
-      />
+      />      
     </View>
   );
+  */
+
+
+  return (
+    <MultipleChoice answer="ans" choices={["wrong", "ans", "wron", "false"]}/>
+  )
 };
 
 export default PracticeScreen;

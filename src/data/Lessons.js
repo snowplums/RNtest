@@ -25,7 +25,7 @@ export const Lessons = [
         </Text>
         <Text style={styles.txt}>
           Lesson content here...
-          {"\n"}Hello blahblah lbaafaefaefae
+              {"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}Hello blahblah lbaafaefaefae
         </Text>
       </>
     ),

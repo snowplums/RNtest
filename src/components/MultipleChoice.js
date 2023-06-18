@@ -4,12 +4,28 @@ import { View, Text, Image, Button, StyleSheet, Pressable } from "react-native";
 
 const MultipleChoice = (props) => {
 
+  var incorrect = 0;
+
   const checkAnswer = (choice) => {
     if (choice === props.answer) {
-      console.log("Right Answer");
+      correctAnswer();
     } else {
-      console.log("Wrong Answer");
+      incorrectAnswer();
     }
+  };
+
+  const correctAnswer = () => {
+    
+  };
+
+  const incorrectAnswer = () => {
+    if(incorrect >= 2){
+      
+    }
+  };
+
+  const revealAnswer = () => {
+
   };
 
   return (

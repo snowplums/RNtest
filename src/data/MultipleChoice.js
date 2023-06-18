@@ -1,3 +1,6 @@
-import React
+import React from "react";
 
-from "react";
+
+export const MultipleChoice = [
+    
+];
