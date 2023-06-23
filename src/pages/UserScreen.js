@@ -1,50 +1,32 @@
 import React, {useState} from "react";
 
-import { View, Text, Button, Switch, StyleSheet } from "react-native";
+import { View, Text, Button, Switch, StyleSheet, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { setLast, test } from "../storage/asyncStorage";
+import { setLast, clearAll } from "../storage/asyncStorage";
 
 const UserScreen = ({ navigation }) => {
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-  const [input, setInput] = useState('')
-
-  const pressed = async () => {
-    try {
-      await AsyncStorage.setItem('key', "Hi there")
-    } catch(e) {
-      // save error
-    }
-  
-    console.log('Done.')
-  }
-
-  const pressed2 = async () => {
-    try {
-      return await AsyncStorage.getItem('key')
-    } catch(e) {
-      // read error
-    }
-  
-    console.log('Done.')
-    
-  }
-
-  const returnedData = () => {
-    AsyncStorage.getItem('key').then((value) =>
-      {if(value) console.log(value)}
-    )
+  const clearData = () => {
+    Alert.alert('Clear Data', 'Are you sure you want to clear all data? This will reset all progress and settings.', [
+    {
+      text: 'Cancel',
+      onPress: () => console.log('Cancel Pressed'),
+      style: 'cancel'
+    },
+    {
+      text: `I'm Sure`, 
+      onPress: () => {clearAll(); navigation.navigate("Home")}
+    }]);
   }
 
   return (
 
     <View>
-      <Button title="hi" onPress={pressed}/>
-      <Button title="hi" onPress={returnedData}/>
-
+  
 
       <Text style={styles.bigTxt}>Settings</Text>
       <View style={styles.setting}>
@@ -58,6 +40,7 @@ const UserScreen = ({ navigation }) => {
           style={styles.switch}
         />
       </View>
+      <Button title="Clear Data" onPress={clearData} />
     </View>
     
   );

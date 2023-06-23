@@ -1,4 +1,4 @@
-import React , {useState}from "react";
+import React , {useState, useEffect}from "react";
 import {
   StyleSheet,
   FlatList,
@@ -19,7 +19,33 @@ var ButtonColor;
 
 const LessonScreen = (props) => {
   const { navigation, route } = props;
+  const [lessonState, setLessonState] = useState(new Array(Lessons.length).fill('incomplete'));
+
   const isFocused = useIsFocused()
+  
+  useEffect(() => {
+    const fetchData = async () =>{
+      if(isFocused){
+        var tempArray = new Array(Lessons.length).fill('incomplete'); 
+        var lessonStatus;
+        for(let i = 0; i < Lessons.length; i++){
+         
+          lessonStatus = await AsyncStorage.getItem(JSON.stringify(Lessons[i].lessonId));
+          console.log(lessonStatus);
+          if(lessonStatus === 'true'){
+            tempArray[i] = 'complete';
+          }
+        }
+        setLessonState(tempArray);
+        console.log(lessonState);
+      }
+    }
+    fetchData().catch(console.error);
+    },[isFocused]
+  )
+
+
+
   
   //const lesson = route.params?.lesson;
 
@@ -29,19 +55,34 @@ const LessonScreen = (props) => {
   };
 
   const renderLessons = ({ item }) => {
-    
-    if(isCompleted(item.lessonId)){
+  
+
+    if(lessonState[item.lessonId-1] == 'complete'){
       ButtonColor = 'green';
     }else{
       ButtonColor = 'red';
     }
-    
+
+    var buttonStyle = StyleSheet.create({
+      button: {
+        width: 340,
+        paddingVertical: 6,
+        borderWidth: 2,
+        borderRadius: 20,
+        borderColor: "red",
+        backgroundColor: ButtonColor,
+        alignSelf: "center",
+        marginTop: 9,
+      }
+    });
+
+
    
     return (
       <View>
         <TouchableOpacity
           onPress={() => onPressLesson(item)}
-          style={styles.button}
+          style={buttonStyle.button}
         >
           <Text
             style={[
@@ -71,16 +112,7 @@ const LessonScreen = (props) => {
     LTxtThree: {
       marginLeft: "10%",
     },
-    button: {
-      width: 340,
-      paddingVertical: 6,
-      borderWidth: 2,
-      borderRadius: 20,
-      borderColor: "red",
-      backgroundColor: ButtonColor,
-      alignSelf: "center",
-      marginTop: 9,
-    },
+    
   });
 
   return (

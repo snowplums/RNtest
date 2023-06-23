@@ -20,7 +20,7 @@ import { useIsFocused } from '@react-navigation/native'
 
 
 const HomeScreen =  ( {navigation} ) => {
-  const [currentLesson, setCurrentLesson] = useState('1');
+  const [currentLesson, setCurrentLesson] = useState('0');
 
   const isFocused = useIsFocused()
 
@@ -32,7 +32,7 @@ useEffect(() => {
       if(currentLesson){
     console.log(currentLesson)
     setCurrentLesson(currentLesson);}
-    else setCurrentLesson('1');
+    else setCurrentLesson('0');
   }
   }
   fetchData().catch(console.error);
@@ -71,7 +71,7 @@ const onPressLast = () => {
             Last Lesson:
           </Text>
           <Text style={styles.nameTxt}>
-          {Lessons[parseInt(currentLesson)-1].title}
+          {(Lessons[parseInt(currentLesson)-1])?Lessons[parseInt(currentLesson)-1].title:'No data'}
           </Text>
         </View>
       </TouchableOpacity>
