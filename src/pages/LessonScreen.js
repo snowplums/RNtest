@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState}from "react";
 import {
   StyleSheet,
   FlatList,
@@ -8,11 +8,19 @@ import {
   Image,
 } from "react-native";
 
+import {isCompleted} from "../storage/asyncStorage";
+
 import { Lessons } from "../data/Lessons";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/native'
+var ButtonColor;
+ 
 
 const LessonScreen = (props) => {
   const { navigation, route } = props;
-
+  const isFocused = useIsFocused()
+  
   //const lesson = route.params?.lesson;
 
   const onPressLesson = (lesson) => {
@@ -21,6 +29,14 @@ const LessonScreen = (props) => {
   };
 
   const renderLessons = ({ item }) => {
+    
+    if(isCompleted(item.lessonId)){
+      ButtonColor = 'green';
+    }else{
+      ButtonColor = 'red';
+    }
+    
+   
     return (
       <View>
         <TouchableOpacity
@@ -32,6 +48,7 @@ const LessonScreen = (props) => {
               styles.LTxt,
               item.lessonId >= 10 && styles.LTxtTwo,
               item.lessonId >= 100 && styles.LTxtThree,
+              
             ]}
           >
             {item.title}
@@ -60,7 +77,7 @@ const LessonScreen = (props) => {
       borderWidth: 2,
       borderRadius: 20,
       borderColor: "red",
-      backgroundColor: "gold",
+      backgroundColor: ButtonColor,
       alignSelf: "center",
       marginTop: 9,
     },

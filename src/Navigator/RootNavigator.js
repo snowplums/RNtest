@@ -47,6 +47,7 @@ const HomeNavigator = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="PracticePage" component={PracticeScreen} />
+      <Stack.Screen name="LessonPage" component={LessonPage} />
     </Stack.Navigator>
   );
 };

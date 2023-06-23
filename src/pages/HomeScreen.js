@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   StyleSheet,
   Text,
@@ -7,11 +7,48 @@ import {
   Image
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
+import {getLast, clearAll} from "../storage/asyncStorage";
+
+
 
 import { Lessons } from "../data/Lessons";
 import { Practice } from "../data/Practice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const HomeScreen = ({ navigation }) => {
+import { useIsFocused } from '@react-navigation/native'
+
+
+
+const HomeScreen =  ( {navigation} ) => {
+  const [currentLesson, setCurrentLesson] = useState('1');
+
+  const isFocused = useIsFocused()
+
+useEffect(() => {
+  const fetchData = async () =>{
+    if(isFocused){
+    
+    const currentLesson = await AsyncStorage.getItem('last');
+      if(currentLesson){
+    console.log(currentLesson)
+    setCurrentLesson(currentLesson);}
+    else setCurrentLesson('1');
+  }
+  }
+  fetchData().catch(console.error);
+  },[isFocused]
+)
+  
+
+const onPressLast = () => {
+  var lastLesson = Lessons[parseInt(currentLesson)-1];
+  navigation.navigate("LessonPage", {lastLesson});
+}
+
+
+
+ // const previousLesson = await getLast();
+   
   const LastLesson = () => {
     //navigation.navigate("LessonPage", { lastL });
   };
@@ -20,11 +57,12 @@ const HomeScreen = ({ navigation }) => {
     //navigation.navigate("LessonPage", { lastP });
   };
 
+  
   return (
     <View>
       <Text style={styles.Welcome}>Welcome Back!</Text>
       <TouchableOpacity
-        onPress={() => {}}
+        onPress={onPressLast}
         style={styles.button}
       >
         <Icon name="arrow-right" style={styles.icon}></Icon>
@@ -33,12 +71,12 @@ const HomeScreen = ({ navigation }) => {
             Last Lesson:
           </Text>
           <Text style={styles.nameTxt}>
-            asdfsad
+          {Lessons[parseInt(currentLesson)-1].title}
           </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => {}}
+        onPress={() => {clearAll();}}
         style={styles.button}
       >
         <Icon name="arrow-right" style={styles.icon}></Icon>
@@ -47,7 +85,7 @@ const HomeScreen = ({ navigation }) => {
             Last Practice:
           </Text>
           <Text style={styles.nameTxt}>
-            asdfsad
+            
           </Text>
         </View>
       </TouchableOpacity>

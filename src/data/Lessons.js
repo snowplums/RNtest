@@ -15,6 +15,7 @@ const styles = StyleSheet.create ({
 });
 
 export const Lessons = [
+  
   {
     lessonId: 1,
     title: "L e s s o n     1",

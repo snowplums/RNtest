@@ -1,15 +1,51 @@
 import React, {useState} from "react";
 
 import { View, Text, Button, Switch, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { setLast, test } from "../storage/asyncStorage";
 
 const UserScreen = ({ navigation }) => {
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
+  const [input, setInput] = useState('')
+
+  const pressed = async () => {
+    try {
+      await AsyncStorage.setItem('key', "Hi there")
+    } catch(e) {
+      // save error
+    }
+  
+    console.log('Done.')
+  }
+
+  const pressed2 = async () => {
+    try {
+      return await AsyncStorage.getItem('key')
+    } catch(e) {
+      // read error
+    }
+  
+    console.log('Done.')
+    
+  }
+
+  const returnedData = () => {
+    AsyncStorage.getItem('key').then((value) =>
+      {if(value) console.log(value)}
+    )
+  }
+
   return (
 
     <View>
+      <Button title="hi" onPress={pressed}/>
+      <Button title="hi" onPress={returnedData}/>
+
+
       <Text style={styles.bigTxt}>Settings</Text>
       <View style={styles.setting}>
         <Text style={styles.setText}>Dark Mode:</Text>
