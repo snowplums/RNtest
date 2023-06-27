@@ -16,10 +16,12 @@ import { Practice } from "../data/Practice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { useIsFocused } from '@react-navigation/native'
+import { NavigationActions, SwitchActions } from "react-navigation";
 
 
 
-const HomeScreen =  ( {navigation} ) => {
+const HomeScreen =  ( props ) => {
+  const { navigation, route } = props;
   const [currentLesson, setCurrentLesson] = useState('0');
 
   const isFocused = useIsFocused()
@@ -41,8 +43,21 @@ useEffect(() => {
   
 
 const onPressLast = () => {
+  
+  if(currentLesson){
+
   var lastLesson = Lessons[parseInt(currentLesson)-1];
-  navigation.navigate("LessonPage", {lastLesson});
+  console.log(lastLesson);
+
+
+  
+    navigation.navigate("Lessons", { screen: "LessonPage", params: {lesson: lastLesson} });
+
+  }
+  else{
+    console.log('no last lesson');
+  }
+  
 }
 
 

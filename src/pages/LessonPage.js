@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView , Dimensions} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
 
 import { Lessons } from "../data/Lessons";
 import {completeLesson, setLast} from "../storage/asyncStorage";

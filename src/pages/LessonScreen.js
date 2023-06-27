@@ -31,13 +31,11 @@ const LessonScreen = (props) => {
         for(let i = 0; i < Lessons.length; i++){
          
           lessonStatus = await AsyncStorage.getItem(JSON.stringify(Lessons[i].lessonId));
-          console.log(lessonStatus);
           if(lessonStatus === 'true'){
             tempArray[i] = 'complete';
           }
         }
         setLessonState(tempArray);
-        console.log(lessonState);
       }
     }
     fetchData().catch(console.error);
@@ -50,7 +48,6 @@ const LessonScreen = (props) => {
   //const lesson = route.params?.lesson;
 
   const onPressLesson = (lesson) => {
-    //console.log(lesson);
     navigation.navigate("LessonPage", { lesson });
   };
 
