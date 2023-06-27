@@ -9,6 +9,9 @@ import PracticeScreen from "../pages/PracticeScreen";
 import LessonScreen from "../pages/LessonScreen";
 import LessonPage from "../pages/LessonPage";
 
+import MultipleChoice from "../pages/PracticeActivities/MultipleChoice";
+import SentenceScrambler from "../pages/PracticeActivities/SentenceScrambler";
+
 const Stack = createStackNavigator();
 
 const getHeaderTitle = (route) => {
@@ -48,7 +51,6 @@ const HomeNavigator = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="PracticePage" component={PracticeScreen} />
-      <Stack.Screen name="LessonPage" component={LessonPage} />
     </Stack.Navigator>
   );
 };
@@ -64,6 +66,8 @@ const LessonNavigator = () => {
     >
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
+      <Stack.Screen name="MultipleChoice" component={MultipleChoice} />
+      <Stack.Screen name="SentenceScrambler" component={SentenceScrambler} />
     </Stack.Navigator>
   );
 };

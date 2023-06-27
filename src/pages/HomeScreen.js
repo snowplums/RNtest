@@ -32,7 +32,7 @@ useEffect(() => {
     
     const currentLesson = await AsyncStorage.getItem('last');
       if(currentLesson){
-    console.log(currentLesson)
+    //console.log(currentLesson)
     setCurrentLesson(currentLesson);}
     else setCurrentLesson('0');
   }
@@ -47,7 +47,7 @@ const onPressLast = () => {
   if(currentLesson){
 
   var lastLesson = Lessons[parseInt(currentLesson)-1];
-  console.log(lastLesson);
+  //console.log(lastLesson);
 
 
   

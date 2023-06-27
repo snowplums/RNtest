@@ -4,7 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 //Set last lesson
 const setLast = async (last) => {
     try{
-        console.log(last);
     await AsyncStorage.setItem('last', JSON.stringify(last));
     }catch (error){
         console.log(error);
