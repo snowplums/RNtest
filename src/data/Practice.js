@@ -1,12 +1,14 @@
 export const Practice = [
   {
-    title: "Activity1",
+    title: "Multiple Choice",
     image: require("../images/temp.png"),
     activityId: 1,
+    route: "MultipleChoice",
   },
   {
-    title: "Activity2",
+    title: "Sentence Scrambler",
     image: require("../images/temp.png"),
     activityId: 2,
+    route: "SentenceScrambler",
   },
 ];

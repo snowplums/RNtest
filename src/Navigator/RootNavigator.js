@@ -1,12 +1,16 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import HomeScreen from "../pages/HomeScreen";
 import UserScreen from "../pages/UserScreen";
 import UserSettings from "../pages/UserSettings";
 import PracticeScreen from "../pages/PracticeScreen";
 import LessonScreen from "../pages/LessonScreen";
 import LessonPage from "../pages/LessonPage";
+
+import MultipleChoice from "../pages/PracticeActivities/MultipleChoice";
+import SentenceScrambler from "../pages/PracticeActivities/SentenceScrambler";
 
 const Stack = createStackNavigator();
 
@@ -62,6 +66,8 @@ const LessonNavigator = () => {
     >
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
+      <Stack.Screen name="MultipleChoice" component={MultipleChoice} />
+      <Stack.Screen name="SentenceScrambler" component={SentenceScrambler} />
     </Stack.Navigator>
   );
 };

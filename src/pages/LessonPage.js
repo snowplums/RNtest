@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView , Dimensions} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
 
 import { Lessons } from "../data/Lessons";
+import {completeLesson, setLast} from "../storage/asyncStorage";
 
 const styles = StyleSheet.create ({
   Button: {
@@ -35,12 +36,15 @@ const styles = StyleSheet.create ({
 
 const LessonPage = ({ navigation, route }) => {
   const { content, lessonId } = route.params.lesson;
-  console.log(route);
   const onPressNext = (lesson) => {
     //console.log(lesson);
     navigation.navigate("LessonPage", { lesson });
   };
 //must set maximum lesson id value for the next button ------------
+
+  completeLesson(lessonId);
+  setLast(lessonId);
+
   return (
   <ScrollView contentContainerStyle={{paddingBottom: 80}}>
     {content}

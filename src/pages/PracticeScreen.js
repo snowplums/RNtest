@@ -11,28 +11,30 @@ import {
 } from "react-native";
 
 import { Practice } from "../data/Practice.js";
-import MultipleChoice from "../components/MultipleChoice.js";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const MyImage = require("../images/temp.png");
 
 const PracticeScreen = (props) => {
   const { navigation, route } = props;
-  const onPressPractice = (practice) => {
-    navigation.navigate("PracticePage", { practice });
-  };
+  
 
-  //Create a render function for the FlatList
-  const renderPractice = ({ item }) => {
+  
+  const renderPractice = ({ item} ) => {
     return (
-      <Pressable onPress={() => onPressPractice(item)}>
-        <View>
-          <Text>{item.title}</Text>
-          <Image source={item.image} alt="MyImage" />
-        </View>
-      </Pressable>
+      <View>
+      <TouchableOpacity onPress={onPressPractice(item)}>
+        <Text>{item.title}</Text>
+        <Image source={MyImage} />
+      </TouchableOpacity>
+      </View>
     );
   };
-  /*
+
+  const onPressPractice = (practice) => {
+    navigation.navigate(practice.route);
+  }
+
   return (
     <View>
       <FlatList

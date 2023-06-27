@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState, useEffect}from "react";
 import {
   StyleSheet,
   FlatList,
@@ -8,30 +8,85 @@ import {
   Image,
 } from "react-native";
 
+import {isCompleted} from "../storage/asyncStorage";
+
 import { Lessons } from "../data/Lessons";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/native'
+var ButtonColor;
+ 
 
 const LessonScreen = (props) => {
   const { navigation, route } = props;
+  const [lessonState, setLessonState] = useState(new Array(Lessons.length).fill('incomplete'));
 
+  const isFocused = useIsFocused()
+  
+  useEffect(() => {
+    const fetchData = async () =>{
+      if(isFocused){
+        var tempArray = new Array(Lessons.length).fill('incomplete'); 
+        var lessonStatus;
+        for(let i = 0; i < Lessons.length; i++){
+         
+          lessonStatus = await AsyncStorage.getItem(JSON.stringify(Lessons[i].lessonId));
+          if(lessonStatus === 'true'){
+            tempArray[i] = 'complete';
+          }
+        }
+        setLessonState(tempArray);
+      }
+    }
+    fetchData().catch(console.error);
+    },[isFocused]
+  )
+
+
+
+  
   //const lesson = route.params?.lesson;
 
   const onPressLesson = (lesson) => {
-    //console.log(lesson);
     navigation.navigate("LessonPage", { lesson });
   };
 
   const renderLessons = ({ item }) => {
+  
+
+    if(lessonState[item.lessonId-1] == 'complete'){
+      ButtonColor = 'green';
+    }else{
+      ButtonColor = 'red';
+    }
+
+    var buttonStyle = StyleSheet.create({
+      button: {
+        width: 340,
+        paddingVertical: 6,
+        borderWidth: 2,
+        borderRadius: 20,
+        borderColor: "red",
+        backgroundColor: ButtonColor,
+        alignSelf: "center",
+        marginTop: 9,
+      }
+    });
+
+
+   
     return (
       <View>
         <TouchableOpacity
           onPress={() => onPressLesson(item)}
-          style={styles.button}
+          style={buttonStyle.button}
         >
           <Text
             style={[
               styles.LTxt,
               item.lessonId >= 10 && styles.LTxtTwo,
               item.lessonId >= 100 && styles.LTxtThree,
+              
             ]}
           >
             {item.title}
@@ -54,16 +109,7 @@ const LessonScreen = (props) => {
     LTxtThree: {
       marginLeft: "10%",
     },
-    button: {
-      width: 340,
-      paddingVertical: 6,
-      borderWidth: 2,
-      borderRadius: 20,
-      borderColor: "red",
-      backgroundColor: "gold",
-      alignSelf: "center",
-      marginTop: 9,
-    },
+    
   });
 
   return (
