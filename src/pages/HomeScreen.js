@@ -59,7 +59,6 @@ const onPressLast = () => {
 
   
     navigation.navigate("Lessons", { screen: "LessonPage", params: {lesson: lastLesson} });
-
   }
   else{
     console.log('no last lesson');

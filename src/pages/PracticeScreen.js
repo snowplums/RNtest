@@ -21,9 +21,9 @@ const PracticeScreen = (props) => {
   const renderPractice = ({ item} ) => {
     return (
       <View>
-      <TouchableOpacity style={styles.button} onPress={onPressPractice(item)}>
-        <Text style={styles.Txt}>{item.title}</Text>
-        <Image source={MyImage} style={styles.Img}/>
+      <TouchableOpacity onPress={()=>onPressPractice(item)}>
+        <Text>{item.title}</Text>
+        <Image source={MyImage} />
       </TouchableOpacity>
       </View>
     );
@@ -41,13 +41,16 @@ const PracticeScreen = (props) => {
         renderItem={renderPractice}
         keyExtractor={(item) => `${item.activityId}`}
       />      
+      
     </View>
   );
+  /*
 
 
   return (
     <MultipleChoice answer="ans" choices={["wrong", "ans", "wron", "false"]}/>
   )
+  */
 };
 
 export default PracticeScreen;

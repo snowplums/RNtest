@@ -66,8 +66,7 @@ const LessonNavigator = () => {
     >
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
-      <Stack.Screen name="MultipleChoice" component={MultipleChoice} />
-      <Stack.Screen name="SentenceScrambler" component={SentenceScrambler} />
+      
     </Stack.Navigator>
   );
 };
