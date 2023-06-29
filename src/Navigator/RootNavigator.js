@@ -83,6 +83,8 @@ const PracticeNavigator = () => {
     >
       <Stack.Screen name="PracticePage" component={PracticeScreen} />
       <Stack.Screen name="HomePage" component={HomeScreen} />
+      <Stack.Screen name="MultipleChoice" component={MultipleChoice} />
+      <Stack.Screen name="SentenceScrambler" component={SentenceScrambler} />
     </Stack.Navigator>
   );
 };

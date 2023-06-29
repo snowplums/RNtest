@@ -15,16 +15,14 @@ import { Lessons } from "../data/Lessons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/native'
 var ButtonColor;
- 
 
 const LessonScreen = (props) => {
   const { navigation, route } = props;
   const [lessonState, setLessonState] = useState(new Array(Lessons.length).fill('incomplete'));
-
   const isFocused = useIsFocused()
   
   useEffect(() => {
-    const fetchData = async () =>{
+    const fetchData = async () => {
       if(isFocused){
         var tempArray = new Array(Lessons.length).fill('incomplete'); 
         var lessonStatus;
@@ -41,8 +39,6 @@ const LessonScreen = (props) => {
     fetchData().catch(console.error);
     },[isFocused]
   )
-
-
 
   
   //const lesson = route.params?.lesson;

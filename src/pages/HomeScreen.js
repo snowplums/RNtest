@@ -10,7 +10,6 @@ import Icon from "react-native-vector-icons/Entypo";
 import {getLast, clearAll} from "../storage/asyncStorage";
 
 
-
 import { Lessons } from "../data/Lessons";
 import { Practice } from "../data/Practice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -18,28 +17,36 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/native'
 import { NavigationActions, SwitchActions } from "react-navigation";
 
-
-
 const HomeScreen =  ( props ) => {
   const { navigation, route } = props;
   const [currentLesson, setCurrentLesson] = useState('0');
 
   const isFocused = useIsFocused()
+  const [lessonState, setLessonState] = useState(new Array(Lessons.length).fill('incomplete'));
 
-useEffect(() => {
-  const fetchData = async () =>{
-    if(isFocused){
-    
-    const currentLesson = await AsyncStorage.getItem('last');
-      if(currentLesson){
-    //console.log(currentLesson)
-    setCurrentLesson(currentLesson);}
-    else setCurrentLesson('0');
-  }
-  }
-  fetchData().catch(console.error);
+  useEffect(() => {
+    const fetchData = async () =>{
+      if (isFocused) {
+        const currentLesson = await AsyncStorage.getItem('last');
+        if (currentLesson) {
+          //console.log(currentLesson)
+          setCurrentLesson(currentLesson);
+        } else setCurrentLesson('0');
+        var tempArray = new Array(Lessons.length).fill('incomplete'); 
+        var lessonStatus;
+        for(let i = 0; i < Lessons.length; i++){
+         
+          lessonStatus = await AsyncStorage.getItem(JSON.stringify(Lessons[i].lessonId));
+          if(lessonStatus === 'true'){
+            tempArray[i] = 'complete';
+          }
+        }
+        setLessonState(tempArray);
+      }
+    }
+    fetchData().catch(console.error);
   },[isFocused]
-)
+  )
   
 
 const onPressLast = () => {
@@ -60,8 +67,6 @@ const onPressLast = () => {
   
 }
 
-
-
  // const previousLesson = await getLast();
    
   const LastLesson = () => {
@@ -72,7 +77,84 @@ const onPressLast = () => {
     //navigation.navigate("LessonPage", { lastP });
   };
 
+  const getProgress = () => {
+    var completed = 0;
+    for (var i=0;i<lessonState.length;i++) {
+      if (lessonState[i] == 'complete') {
+        completed++;
+      }
+    }
+    return completed / lessonState.length;
+  }
   
+  const styles = StyleSheet.create ({
+    Welcome: {
+      fontSize: 75,
+      fontWeight: "700",
+      textAlign: 'center',
+      fontFamily: 'Verdana',
+      marginTop: '5%',
+      marginBottom: '15%'
+    },
+    lastTxt: {
+      fontSize: 35,
+      fontWeight: "800",
+      color: "#AAAAFF",
+      textAlign: 'left'
+    },
+    nameTxt:{
+      fontSize: 20,
+      fontWeight: "800",
+      color: "red",
+      textAlign: 'center'
+    },
+    regTxt: {
+      fontSize: 30,
+      fontWeight: "400",
+      color: "#888888",
+      textAlign: 'center',
+      fontFamily: 'Helvetica',
+      marginTop: '5%',
+      marginBottom: '5%'
+    },
+    button: {
+      width: 380,
+      paddingVertical: 6,
+      flexDirection: "row",
+      borderWidth: 2,
+      borderRadius: 20,
+      borderColor: "blue",
+      backgroundColor: "lightblue",
+      alignSelf: "center",
+      alignItems: 'center',
+      marginBottom: '5%'
+    },
+    icon: {
+      color: "#00F300",
+      fontSize: 80,
+      height: 80,
+      width: '25%'
+    },
+    progBox: {
+      width: 380,
+      height: 30,
+      borderWidth: 3,
+      borderRadius: 10,
+      alignSelf: 'center',
+      position: 'absolute',
+      top: 575,
+    },
+    progress: {
+      width: 380 * getProgress(),
+      height: 24,
+      backgroundColor: 'red',
+      borderColor: 'red',
+      position: 'absolute',
+      top: 578,
+      left: 20
+    }
+  });
+
   return (
     <View>
       <Text style={styles.Welcome}>Welcome Back!</Text>
@@ -114,71 +196,3 @@ const onPressLast = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create ({
-  Welcome: {
-    fontSize: 75,
-    fontWeight: "700",
-    textAlign: 'center',
-    fontFamily: 'Verdana',
-    marginTop: '5%',
-    marginBottom: '15%'
-  },
-  lastTxt: {
-    fontSize: 35,
-    fontWeight: "800",
-    color: "#AAAAFF",
-    textAlign: 'left'
-  },
-  nameTxt:{
-    fontSize: 20,
-    fontWeight: "800",
-    color: "red",
-    textAlign: 'center'
-  },
-  regTxt: {
-    fontSize: 30,
-    fontWeight: "400",
-    color: "#888888",
-    textAlign: 'center',
-    fontFamily: 'Helvetica',
-    marginTop: '5%',
-    marginBottom: '5%'
-  },
-  button: {
-    width: 380,
-    paddingVertical: 6,
-    flexDirection: "row",
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: "blue",
-    backgroundColor: "lightblue",
-    alignSelf: "center",
-    alignItems: 'center',
-    marginBottom: '5%'
-  },
-  icon: {
-    color: "#00F300",
-    fontSize: 80,
-    height: 80,
-    width: '25%'
-  },
-  progBox: {
-    width: 380,
-    height: 30,
-    borderWidth: 3,
-    borderRadius: 10,
-    alignSelf: 'center',
-    position: 'absolute',
-    top: 575,
-  },
-  progress: {
-    width: 200,
-    height: 24,
-    backgroundColor: 'red',
-    borderColor: 'red',
-    position: 'absolute',
-    top: 578,
-    left: 20
-  }
-});

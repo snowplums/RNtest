@@ -7,7 +7,6 @@ import {completeLesson, setLast} from "../storage/asyncStorage";
 const styles = StyleSheet.create ({
   Button: {
     //method of positioning is kind of stupid
-    position: 'absolute',
     paddingHorizontal: 6,
     borderWidth: 2,
     borderRadius: 5,
@@ -16,13 +15,11 @@ const styles = StyleSheet.create ({
   },
   back: {
     width: 105,
-    left: 15,
-    bottom:0
+    left: 15
   },
   next: {
     width: 100,
-    left: 300,
-    bottom: 0
+    right: -195
   },
   off: {
     backgroundColor: 'lightgray'
@@ -31,6 +28,11 @@ const styles = StyleSheet.create ({
     fontSize: 40,
     fontWeight: '500',
     color: 'magenta',
+  },
+  buttonsRow: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: '5%'
   }
 });
 
@@ -46,8 +48,11 @@ const LessonPage = ({ navigation, route }) => {
   setLast(lessonId);
 
   return (
-  <ScrollView contentContainerStyle={{paddingBottom: 80}}>
-    {content}
+    <View style={{height: '100%'}}>
+      <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+        {content}
+      </ScrollView>
+      <View style={styles.buttonsRow}>
         <TouchableOpacity
           onPress={() => (lessonId > 1) ? onPressNext(Lessons[lessonId-2]) : console.log('Unable to go back.')}
           style={[styles.Button, styles.back, lessonId == 1 && styles.off]}
@@ -68,8 +73,9 @@ const LessonPage = ({ navigation, route }) => {
             Next
           </Text>
         </TouchableOpacity>
-    </ScrollView> 
-    );
+      </View>
+    </View>
+  );
 };
 
 export default LessonPage;
