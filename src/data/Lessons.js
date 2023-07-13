@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const styles = StyleSheet.create ({
-  txt: {
+  text: {
     fontSize: 20,
     marginHorizontal: '7%',
   },
@@ -11,7 +11,29 @@ const styles = StyleSheet.create ({
     textAlign: 'center',
     fontWeight: 'bold',
     marginVertical: 10
+  },
+  underlined: {
+    textDecorationLine: 'underline',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  italic: {
+    fontStyle: 'italic',
+  },
+  image: {
+    width: 300,
+    height: 300,
+    alignSelf: 'center',
+    marginVertical: 10
+  },
+  imageSmall: {
+    width: 200,
+    height: 200,
+    alignSelf: 'center',
+    marginVertical: 10
   }
+
 });
 
 export const Lessons = [
@@ -24,7 +46,7 @@ export const Lessons = [
         <Text style={styles.title}>
           Lesson 1
         </Text>
-        <Text style={styles.txt}>
+        <Text style={styles.text}>
           Lesson content here...
               {"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}Hello blahblah lbaafaefaefae
         </Text>
@@ -135,7 +157,7 @@ export const Lessons = [
         <Text style={styles.title}>
           Lesson 3
         </Text>
-        <Text style={styles.txt}>
+        <Text style={styles.text}>
           Lesson content here...
           {"\n"}Hello blahblah lbaafaefaefae
         </Text>
