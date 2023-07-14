@@ -87,18 +87,29 @@ const onPressLast = () => {
   }
   
   const styles = StyleSheet.create ({
+    WelcomeShadow: {
+      fontSize: 75,
+      fontWeight: "700",
+      color: 'black',
+      textAlign: 'center',
+      fontFamily: 'Verdana',
+      marginTop: '8%',
+      marginBottom: '15%',
+      marginLeft: '1%'
+    },
     Welcome: {
       fontSize: 75,
       fontWeight: "700",
+      color: 'darkred',
       textAlign: 'center',
       fontFamily: 'Verdana',
-      marginTop: '5%',
-      marginBottom: '15%'
+      marginTop: '7%',
+      marginBottom: '16%'
     },
     lastTxt: {
       fontSize: 35,
       fontWeight: "800",
-      color: "#AAAAFF",
+      color: "#DD2222",
       textAlign: 'left'
     },
     nameTxt:{
@@ -109,21 +120,21 @@ const onPressLast = () => {
     },
     regTxt: {
       fontSize: 30,
-      fontWeight: "400",
-      color: "#888888",
+      fontWeight: '800',
+      color: "red",
       textAlign: 'center',
-      fontFamily: 'Helvetica',
-      marginTop: '5%',
-      marginBottom: '5%'
+      fontFamily: 'Verdana',
+      marginTop: '15%',
+      marginBottom: '10%'
     },
     button: {
       width: 380,
       paddingVertical: 6,
       flexDirection: "row",
-      borderWidth: 2,
+      borderWidth: 3,
       borderRadius: 20,
-      borderColor: "blue",
-      backgroundColor: "lightblue",
+      borderColor: "darkred",
+      backgroundColor: "#FF9966",
       alignSelf: "center",
       alignItems: 'center',
       marginBottom: '5%'
@@ -138,58 +149,61 @@ const onPressLast = () => {
       width: 380,
       height: 30,
       borderWidth: 3,
+      borderColor: 'darkred',
       borderRadius: 10,
       alignSelf: 'center',
       position: 'absolute',
-      top: 575,
+      top: 525
     },
     progress: {
       width: 380 * getProgress(),
       height: 24,
-      backgroundColor: 'red',
-      borderColor: 'red',
+      backgroundColor: '#BBD900',
       position: 'absolute',
-      top: 578,
+      top: 528,
       left: 20
     }
   });
 
   return (
     <View>
-      <Text style={styles.Welcome}>Welcome Back!</Text>
-      <TouchableOpacity
-        onPress={onPressLast}
-        style={styles.button}
-      >
-        <Icon name="arrow-right" style={styles.icon}></Icon>
-        <View>
-          <Text style={styles.lastTxt}>
-            Last Lesson:
-          </Text>
-          <Text style={styles.nameTxt}>
-          {(Lessons[parseInt(currentLesson)-1])?Lessons[parseInt(currentLesson)-1].title:'No data'}
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {clearAll();}}
-        style={styles.button}
-      >
-        <Icon name="arrow-right" style={styles.icon}></Icon>
-        <View>
-          <Text style={styles.lastTxt}>
-            Last Practice:
-          </Text>
-          <Text style={styles.nameTxt}>
-            
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <Text style={styles.regTxt}>
-        Progress Bar:
-      </Text>
-      <View style={styles.progress}></View>
-      <View style={styles.progBox}></View>
+      <View style={{justifyContent: 'center', height: '100%'}}>
+        <View style={{position: 'absolute', height: 900, width: 900, backgroundColor: '#FFCC99', 
+                      alignSelf: 'center', borderRadius: 450}}></View>
+        <View style={{position: 'absolute', height: 600, width: 600, backgroundColor: '#FFEE99',
+                      alignSelf: 'center', borderRadius: 300}}></View>
+        <View style={{position: 'absolute', height: 300, width: 300, backgroundColor: '#FFCC99',
+                      alignSelf: 'center', borderRadius: 150}}></View>
+        <View style={{position: 'absolute', height: '100%', width: '100%', borderColor: 'darkred',
+                      borderWidth: 5}}></View>
+        <View style={{position: 'absolute', height: '100%', width: '100%', borderColor: 'darkred',
+                      borderWidth: 5, borderRadius: 20, alignSelf: 'center'}}></View>
+      </View>
+      <View style={{height: '100%', width: '100%', position: 'absolute'}}>
+        <Text style={styles.WelcomeShadow}>Welcome Back!</Text>
+        <TouchableOpacity
+          onPress={onPressLast}
+          style={styles.button}
+        >
+          <Icon name="arrow-right" style={styles.icon}></Icon>
+          <View>
+            <Text style={styles.lastTxt}>
+              Last Lesson:
+            </Text>
+            <Text style={styles.nameTxt}>
+            {(Lessons[parseInt(currentLesson)-1])?Lessons[parseInt(currentLesson)-1].title:'No data'}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.regTxt}>
+          Progress Bar:
+        </Text>
+        <View style={styles.progress}></View>
+        <View style={styles.progBox}></View>
+      </View>
+      <View style={{height: '100%', width: '100%', position: 'absolute'}} pointerEvents="none">
+        <Text style={styles.Welcome}>Welcome Back!</Text>
+      </View>
     </View>
   );
 };
