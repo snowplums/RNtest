@@ -17,14 +17,17 @@ const MyImage = require("../images/temp.png");
 
 const PracticeScreen = (props) => {
   const { navigation, route } = props;
-  
-  const renderPractice = ({ item} ) => {
+
+  const renderPractice = ({ item }) => {
     return (
       <View>
-      <TouchableOpacity onPress={()=>onPressPractice(item)}>
-        <Text>{item.title}</Text>
-        <Image source={MyImage} />
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => onPressPractice(item)}
+        >
+          <Text style={styles.Text}>{item.title}</Text>
+          {item.image}
+        </TouchableOpacity>
       </View>
     );
   };
@@ -32,7 +35,7 @@ const PracticeScreen = (props) => {
   const onPressPractice = (practice) => {
     navigation.navigate(practice.route);
     //<MultipleChoice answer="ans" choices={["wrong", "ans", "wron", "false"]}/>
-  }
+  };
 
   return (
     <View>
@@ -40,8 +43,7 @@ const PracticeScreen = (props) => {
         data={Practice}
         renderItem={renderPractice}
         keyExtractor={(item) => `${item.activityId}`}
-      />      
-      
+      />
     </View>
   );
   /*
@@ -74,25 +76,25 @@ const cellStyle = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  Txt: {
-    fontSize: 60,
+  Text: {
+    fontSize: 30,
     fontWeight: "700",
     color: "magenta",
-    textAlign: 'center'
+    textAlign: "center",
   },
   button: {
     paddingHorizontal: 6,
     paddingVertical: 10,
     borderWidth: 10,
     borderRadius: 40,
-    borderColor: 'red',
-    backgroundColor: 'gold',
-    marginHorizontal: '5%',
-    marginVertical: '5%'
+    borderColor: "red",
+    backgroundColor: "gold",
+    marginHorizontal: "5%",
+    marginVertical: "5%",
   },
   Img: {
     width: 100,
     height: 100,
-    alignSelf: 'center'
-  }
-})
+    alignSelf: "center",
+  },
+});
