@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
   listItem: {
     fontSize: 18,
     textAlign: "justify",
-    lineHeight: 1,
+    paddingLeft: 75,
+    lineHeight: 30,
   },
 });
 
@@ -51,8 +52,7 @@ export const Lessons = [
           Title: 学习英文字母 (Learn English Alphabet)
         </Text>
         <Text style={styles.text}>
-          Introduction:
-          欢迎大家来到学习英文字母的课程！英文字母是学习英语的基础，掌握它们将帮助我们更好地阅读、写作和交流。本课程将详细介绍英文字母、元音和辅音的发音和用法。让我们开始吧！
+          英文字母是学习英语的基础，掌握它们将帮助我们更好地阅读、写作和交流。本课程将详细介绍英文字母、元音和辅音的发音和用法。让我们开始吧！
         </Text>
         <Text style={styles.listItem}>
           -英文字母 (English Alphabet):
@@ -146,7 +146,7 @@ export const Lessons = [
   },
   {
     lessonId: 2,
-    title: "L e s s o n     2",
+    title: "Lesson 2",
     content: (
       <>
         <Text style={styles.title}>
