@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -14,10 +15,6 @@ import SentenceScrambler from "../pages/PracticeActivities/SentenceScrambler";
 
 const Stack = createStackNavigator();
 
-const getHeaderTitle = (route) => {
-  const routeName = route.state;
-};
-
 const Bar = createBottomTabNavigator();
 
 const RootNavigator = () => {
@@ -31,10 +28,82 @@ const RootNavigator = () => {
       }}
       initialRouteName="Home"
     >
-      <Bar.Screen name="Home" component={HomeNavigator} />
-      <Bar.Screen name="Lessons" component={LessonNavigator} />
-      <Bar.Screen name="Practice" component={PracticeNavigator} />
-      <Bar.Screen name="UserPage" component={UserNavigator} />
+      <Bar.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <Image
+                source={require("../../assets/icons/home1.png")}
+                style={{
+                  width: size,
+                  height: size,
+                  borderRadius: size,
+                  tintColor: color,
+                }}
+              />
+            );
+          },
+        }}
+      />
+      <Bar.Screen
+        name="Lessons"
+        component={LessonNavigator}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <Image
+                source={require("../../assets/icons/lesson1.png")}
+                style={{
+                  width: size,
+                  height: size,
+                  borderRadius: size,
+                  tintColor: color,
+                }}
+              />
+            );
+          },
+        }}
+      />
+      <Bar.Screen
+        name="Practice"
+        component={PracticeNavigator}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <Image
+                source={require("../../assets/icons/activity1.png")}
+                style={{
+                  width: size,
+                  height: size,
+                  borderRadius: size,
+                  tintColor: color,
+                }}
+              />
+            );
+          },
+        }}
+      />
+      <Bar.Screen
+        name="Settings"
+        component={UserNavigator}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <Image
+                source={require("../../assets/icons/settings1.png")}
+                style={{
+                  width: size,
+                  height: size,
+                  borderRadius: size,
+                  tintColor: color,
+                }}
+              />
+            );
+          },
+        }}
+      />
     </Bar.Navigator>
   );
 };
@@ -44,6 +113,7 @@ const HomeNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         //headerShown: false,
+        title: "Home",
         headerBackTitleVisible: false,
       }}
       initialRouteName="HomeScreen"
@@ -61,12 +131,12 @@ const LessonNavigator = () => {
       screenOptions={{
         //headerShown: false,
         headerBackTitleVisible: false,
+        title: "Lessons",
       }}
       initialRouteName="LessonScreen"
     >
       <Stack.Screen name="LessonScreen" component={LessonScreen} />
       <Stack.Screen name="LessonPage" component={LessonPage} />
-      
     </Stack.Navigator>
   );
 };
@@ -76,6 +146,7 @@ const PracticeNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         //headerShown: false,
+        title: "Practice Activities",
         headerBackTitleVisible: false,
       }}
       initialRouteName="PracticePage"
@@ -93,6 +164,7 @@ const UserNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         //headerShown: false,
+        title: "Settings",
         headerBackTitleVisible: false,
       }}
       initialRouteName="UserScreen"

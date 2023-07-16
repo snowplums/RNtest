@@ -39,11 +39,68 @@ const PracticeScreen = (props) => {
 
   return (
     <View>
-      <FlatList
-        data={Practice}
-        renderItem={renderPractice}
-        keyExtractor={(item) => `${item.activityId}`}
-      />
+      <View style={{ justifyContent: "center", height: "100%" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: 900,
+            width: 900,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 450,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 600,
+            width: 600,
+            backgroundColor: "#FFEE99",
+            alignSelf: "center",
+            borderRadius: 300,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 300,
+            width: 300,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 150,
+          }}
+        ></View>
+      </View>
+      <View style={{ height: "100%", width: "100%", position: "absolute" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 5,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 5,
+            borderRadius: 20,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <FlatList
+          data={Practice}
+          renderItem={renderPractice}
+          keyExtractor={(item) => `${item.activityId}`}
+        />
+      </View>
     </View>
   );
   /*
@@ -79,7 +136,7 @@ const styles = StyleSheet.create({
   Text: {
     fontSize: 30,
     fontWeight: "700",
-    color: "magenta",
+    color: "red",
     textAlign: "center",
   },
   button: {

@@ -7,7 +7,7 @@ const config2 = [".", "!", "?", '."', ".'", '!"', '?"'];
 
 const SentenceScrambler = () => {
   const [value, setValue] = useState("");
-  console.log(value);
+  //console.log(value);
   function periodCheck(word) {
     for (var c in config1) {
       if (word.includes(config1[c])) {
@@ -45,7 +45,7 @@ const SentenceScrambler = () => {
   }
 
   var str = value;
-  str = str.replaceAll("\n", " ") + " ";
+  str = str.replace("\n", " ") + " ";
   var lyst = [];
   var word = "";
   //var num = 1;
@@ -56,13 +56,13 @@ const SentenceScrambler = () => {
       lyst.push(word);
 
       if (sentenceCheck(word) && !periodCheck(word)) {
-        console.log(word);
+        //  console.log(word);
 
         lyst = shuffleArray(lyst);
         //final += num + ". ";
         //++num;
         for (let j = 0; j < lyst.length; ++j) {
-          lyst[j] = lyst[j].replaceAll("+", " ");
+          lyst[j] = lyst[j].replace("+", " ");
         }
 
         for (let j = 0; j < lyst.length - 1; ++j) {
@@ -103,6 +103,7 @@ const SentenceScrambler = () => {
       <TextInput
         placeholder="Enter Sentences here!"
         editable
+        numberOfLines={4}
         onSubmitEditing={(text) => setValue(text.nativeEvent.text)}
       />
       <TextInput
