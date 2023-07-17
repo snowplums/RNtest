@@ -10,19 +10,18 @@ import {
 } from "react-native";
 
 import { Lessons } from "../data/Lessons";
-import { completeLesson, setLast } from "../storage/asyncStorage";
+import {completeLesson, setLast} from "../storage/asyncStorage";
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   Button: {
     //method of positioning is kind of stupid
     paddingHorizontal: 6,
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: "red",
-    backgroundColor: "gold",
+    borderColor: 'red',
+    backgroundColor: 'gold',
   },
   back: {
-    position: "absolute",
     width: 105,
     left: 15,
     bottom: 0,
@@ -34,17 +33,17 @@ const styles = StyleSheet.create({
     bottom:0,
   },
   off: {
-    backgroundColor: "lightgray",
+    backgroundColor: 'lightgray'
   },
   buttonTxt: {
     fontSize: 40,
-    fontWeight: "500",
-    color: "red",
+    fontWeight: '500',
+    color: 'magenta',
   },
   buttonsRow: {
     flexDirection: "row",
     position: "absolute",
-    bottom: "5%",
+    bottom: Dimensions.get("window").height - 20
   },
 });
 
@@ -57,7 +56,7 @@ const LessonPage = ({ navigation, route }) => {
     navigation.navigate("LessonPage", { lesson });
     scrollRef.current?.scrollTo({y: 0, animated: false });
   };
-  //must set maximum lesson id value for the next button ------------
+//must set maximum lesson id value for the next button ------------
 
   completeLesson(lessonId);
   setLast(lessonId);
@@ -69,24 +68,24 @@ const LessonPage = ({ navigation, route }) => {
       </ScrollView>
       <View style={styles.buttonsRow}>
         <TouchableOpacity
-          onPress={() =>
-            lessonId > 1
-              ? onPressNext(Lessons[lessonId - 2])
-              : console.log("Unable to go back.")
-          }
+          onPress={() => (lessonId > 1) ? onPressNext(Lessons[lessonId-2]) : console.log('Unable to go back.')}
           style={[styles.Button, styles.back, lessonId == 1 && styles.off]}
         >
-          <Text style={styles.buttonTxt}>Back</Text>
+          <Text
+          style={styles.buttonTxt}
+          >
+            Back
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            lessonId < Lessons.length
-              ? onPressNext(Lessons[lessonId])
-              : console.log("Unable to go next.")
-          }
+          onPress={() => (lessonId < Lessons.length) ? onPressNext(Lessons[lessonId]) : console.log('Unable to go next.')}
           style={[styles.Button, styles.next, lessonId == 3 && styles.off]}
         >
-          <Text style={styles.buttonTxt}>Next</Text>
+          <Text
+          style={styles.buttonTxt}
+          >
+            Next
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

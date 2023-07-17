@@ -1,9 +1,6 @@
-import { useState } from "react";
+import react from "react";
 
-import { View, Text, TextInput } from "react-native";
-
-const config1 = ["B.C.", "St.", "U.S.", "U.S.A.", "Dr. ", "Mr.", "Mrs.", "Ms."];
-const config2 = [".", "!", "?", '."', ".'", '!"', '?"'];
+import { View, Text, TextInput, StyleSheet } from "react-native";
 
 const SentenceScrambler = () => {
   const [value, setValue] = useState("");
@@ -99,22 +96,101 @@ const SentenceScrambler = () => {
     </View>
     */
     <View>
-      <Text>Sentence Scrambler</Text>
-      <TextInput
-        placeholder="Enter Sentences here!"
-        editable
-        numberOfLines={4}
-        onSubmitEditing={(text) => setValue(text.nativeEvent.text)}
-      />
-      <TextInput
-        multiline
-        editable
-        numberOfLines={4}
-        placeholder="Output here"
-        value={final}
-      />
+      <View style={{ justifyContent: "center", height: "100%" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: 900,
+            width: 900,
+            backgroundColor: "#EEEE77",
+            alignSelf: "center",
+            borderRadius: 450,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 600,
+            width: 600,
+            backgroundColor: "#EEEE95",
+            alignSelf: "center",
+            borderRadius: 300,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 300,
+            width: 300,
+            backgroundColor: "#EEEE77",
+            alignSelf: "center",
+            borderRadius: 150,
+          }}
+        ></View>
+      </View>
+      <View style={{ height: "100%", width: "100%", position: "absolute" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+            borderRadius: 20,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <Text style={styles.Title}>Sentence Scrambler</Text>
+        <TextInput
+          placeholder="Enter Sentences here!"
+          editable
+          numberOfLines={4}
+          onSubmitEditing={(text) => setValue(text.nativeEvent.text)}
+          style={styles.Box}
+        />
+        <TextInput
+          multiline
+          editable
+          numberOfLines={4}
+          placeholder="Output here"
+          value={final}
+          style={styles.Box}
+        />
+      </View>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  Title: {
+    fontSize: 60,
+    fontWeight: "800",
+    color: "darkorange",
+    textAlign: "center",
+    marginTop: "5%"
+  },
+  Box: {
+    marginHorizontal: "5%",
+    marginTop: "15%",
+    fontSize: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderWidth: 5,
+    borderColor: "red",
+    backgroundColor: "#FEFEFE",
+    borderRadius: 15
+  }
+})
 export default SentenceScrambler;

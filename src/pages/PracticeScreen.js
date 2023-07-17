@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Pressable,
   FlatList,
+  Dimensions,
 } from "react-native";
 
 import { Practice } from "../data/Practice.js";
@@ -17,8 +18,8 @@ const MyImage = require("../images/temp.png");
 
 const PracticeScreen = (props) => {
   const { navigation, route } = props;
-
-  const renderPractice = ({ item }) => {
+  
+  const renderPractice = ({ item} ) => {
     return (
       <View>
         <TouchableOpacity
@@ -26,7 +27,7 @@ const PracticeScreen = (props) => {
           onPress={() => onPressPractice(item)}
         >
           <Text style={styles.Text}>{item.title}</Text>
-          {item.image}
+          <Image style={styles.Img} source={item.image} />
         </TouchableOpacity>
       </View>
     );
@@ -34,7 +35,6 @@ const PracticeScreen = (props) => {
 
   const onPressPractice = (practice) => {
     navigation.navigate(practice.route);
-    //<MultipleChoice answer="ans" choices={["wrong", "ans", "wron", "false"]}/>
   };
 
   return (
@@ -78,7 +78,7 @@ const PracticeScreen = (props) => {
             height: "100%",
             width: "100%",
             borderColor: "darkred",
-            borderWidth: 5,
+            borderWidth: 6,
             zIndex: 1,
           }}
           pointerEvents="none"
@@ -89,7 +89,7 @@ const PracticeScreen = (props) => {
             height: "100%",
             width: "100%",
             borderColor: "darkred",
-            borderWidth: 5,
+            borderWidth: 6,
             borderRadius: 20,
             zIndex: 1,
           }}
@@ -103,13 +103,7 @@ const PracticeScreen = (props) => {
       </View>
     </View>
   );
-  /*
 
-
-  return (
-    <MultipleChoice answer="ans" choices={["wrong", "ans", "wron", "false"]}/>
-  )
-  */
 };
 
 export default PracticeScreen;
@@ -134,24 +128,26 @@ const cellStyle = StyleSheet.create({
 
 const styles = StyleSheet.create({
   Text: {
-    fontSize: 30,
-    fontWeight: "700",
+    fontSize: 35,
+    fontWeight: "800",
     color: "red",
     textAlign: "center",
   },
   button: {
-    paddingHorizontal: 6,
-    paddingVertical: 10,
+    paddingHorizontal: 50,
+    paddingVertical: 20,
     borderWidth: 10,
     borderRadius: 40,
     borderColor: "red",
     backgroundColor: "gold",
-    marginHorizontal: "5%",
-    marginVertical: "5%",
+    marginHorizontal: "10%",
+    marginVertical: "10%",
+    height: Dimensions.get("window").height / 3.5
   },
   Img: {
-    width: 100,
-    height: 100,
+    width: Dimensions.get("window").width / 5,
+    height: Dimensions.get("window").width / 5,
     alignSelf: "center",
+    marginVertical: 20
   },
 });

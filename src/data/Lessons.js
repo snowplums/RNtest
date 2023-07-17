@@ -1,32 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   text: {
     fontSize: 20,
     //textAlign: "right",
     marginHorizontal: "7%",
   },
   title: {
-    fontSize: 40,
-    textAlign: "center",
-    fontWeight: "bold",
-    marginVertical: 10,
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginVertical: 10
   },
   underlined: {
-    textDecorationLine: "underline",
+    textDecorationLine: 'underline',
   },
   bold: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   italic: {
-    fontStyle: "italic",
+    fontStyle: 'italic',
   },
   image: {
     width: 300,
     height: 300,
-    alignSelf: "center",
-    marginVertical: 10,
+    alignSelf: 'center',
+    marginVertical: 10
   },
   imageSmall: {
     width: 200,
@@ -43,9 +43,10 @@ const styles = StyleSheet.create({
 });
 
 export const Lessons = [
+  
   {
     lessonId: 1,
-    title: "Lesson 1: Alphabet",
+    title: "Alphabet",
     content: (
       <>
         <Text style={styles.title}>Lesson 1: Alphabet</Text>
@@ -127,7 +128,7 @@ export const Lessons = [
   },
   {
     lessonId: 2,
-    title: "Lesson 2: Nouns",
+    title: "Nouns",
     content: (
       <>
         <Text style={styles.title}>Lesson 2: Nouns</Text>
@@ -163,7 +164,7 @@ export const Lessons = [
     ),
   },{
     lessonId: 3,
-    title: "Lesson 3: Verbs",
+    title: "Verbs",
     content: (
       <>
       <Text style={styles.title}>Lesson 3: Verbs</Text>
@@ -214,7 +215,7 @@ export const Lessons = [
   },
   {
     lessonId: 4,
-    title: "Lesson 4: Adjectives/Adverbs",
+    title: "Adjectives/Adverbs",
     content: (
       <>
       <Text style={styles.title}>Lesson 4: Adjectives and Adverbs</Text>
@@ -276,7 +277,7 @@ export const Lessons = [
   },
   {
     lessonId: 5,
-    title: "Lesson 5: Possession",
+    title: "Possession",
     content: (
       <>
       <Text style={styles.title}>Lesson 5: Possession</Text>
@@ -320,7 +321,7 @@ export const Lessons = [
   },
   {
     lessonId: 6,
-    title: "Lesson 6: Pronouns",
+    title: "Pronouns",
     content: (
       <>
         <Text style={styles.title}>Lesson 6: Pronouns</Text>
@@ -379,7 +380,7 @@ export const Lessons = [
   },
   {
     lessonId: 7,
-    title: "Lesson 7: Past Tense",
+    title: "Past Tense",
     content: (
       <>
         <Text style={styles.title}>Lesson 7: Past Tense</Text>
@@ -449,7 +450,7 @@ export const Lessons = [
   },
   {
     lessonId: 8,
-    title: "Lesson 8: Future Tense",
+    title: "Future Tense",
     content: (
       <>
         <Text style={styles.title}>Lesson 8: Future Tense</Text>
@@ -508,7 +509,7 @@ export const Lessons = [
   },
   {
     lessonId: 9,
-    title: "Lesson 9: Present Continuous Tense",
+    title: "Present Continuous Tense",
     content: (
       <>
         <Text style={styles.title}>Lesson 9: Present Continuous Tense</Text>
@@ -563,7 +564,7 @@ export const Lessons = [
   },
   {
     lessonId: 10,
-    title: "Lesson 10: Contractions",
+    title: "Contractions",
     content: (
       <>
       <Text style={styles.title}>Lesson 10: Contractions</Text>
