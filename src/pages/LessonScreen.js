@@ -76,7 +76,7 @@ const LessonScreen = (props) => {
 
     const styles = StyleSheet.create({
       LTxt: {
-        fontSize: 40,
+        fontSize: 20,
         fontWeight: "700",
         color: txtColor,
         marginLeft: "15%",

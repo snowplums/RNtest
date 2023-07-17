@@ -3,7 +3,7 @@ import React from "react";
 export const MultipleChoiceData = [
   {
     activityId: 0,
-    description: "CLown",
+    description: "Vowels",
     questions: [
       {
         question: "What is the 2nd vowel?",
@@ -15,16 +15,31 @@ export const MultipleChoiceData = [
         answer: "O",
         choices: ["A", "E", "I", "O"],
       },
+      {
+        question: "Which of the following is not a vowel?",
+        answer: "S",
+        choices: ["A", "E", "I", "S"],
+      
+      },{
+        question: "Which of the following is sometimes a vowel?",
+        answer: "Y",
+        choices: ["A", "E", "I", "Y"],
+      },
+      {
+        question: "Which of the following words contain 3 vowels?",
+        answer: "Guide",
+        choices: ["Guide", "Glide", "Glad", "Gladly"],
+      }
     ],
   },
   {
     activityId: 1,
-    description: "Vowels",
+    description: "Nouns",
     questions: [
       {
-        question: "What is the 2nd vowel?",
-        answer: "E",
-        choices: ["A", "E", "I", "O"],
+        question: "Which of the following is a noun?",
+        answer: "Dog",
+        choices: ["Dog", "Run", "Fast", "Quickly"],
       },
       {
         question: "What is the 4th vowel?",

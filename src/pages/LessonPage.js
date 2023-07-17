@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import {
   View,
   Text,
@@ -25,11 +25,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 105,
     left: 15,
+    bottom: 0,
   },
   next: {
     position: "absolute",
     width: 105,
     left: Dimensions.get("window").width - 120,
+    bottom:0,
   },
   off: {
     backgroundColor: "lightgray",
@@ -48,9 +50,12 @@ const styles = StyleSheet.create({
 
 const LessonPage = ({ navigation, route }) => {
   const { content, lessonId } = route.params.lesson;
+
+  const scrollRef = useRef();
   const onPressNext = (lesson) => {
     //console.log(lesson);
     navigation.navigate("LessonPage", { lesson });
+    scrollRef.current?.scrollTo({y: 0, animated: false });
   };
   //must set maximum lesson id value for the next button ------------
 
@@ -59,7 +64,7 @@ const LessonPage = ({ navigation, route }) => {
 
   return (
     <View style={{ height: "100%" }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
+      <ScrollView ref={scrollRef} contentContainerStyle={{ paddingBottom: 80 }}>
         {content}
       </ScrollView>
       <View style={styles.buttonsRow}>
