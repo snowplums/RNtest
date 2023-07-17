@@ -98,7 +98,6 @@ const UserScreen = ({ navigation }) => {
           <Text style={styles.ButtonTxt}>Clear Data</Text>
         </TouchableOpacity>
       </View>
-      <Button title="Clear Data" onPress={clearData} />
     </View>
     
   );

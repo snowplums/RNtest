@@ -19,7 +19,7 @@ const MyImage = require("../images/temp.png");
 const PracticeScreen = (props) => {
   const { navigation, route } = props;
   
-  const renderPractice = ({ item} ) => {
+  const renderPractice = ({ item } ) => {
     return (
       <View>
         <TouchableOpacity

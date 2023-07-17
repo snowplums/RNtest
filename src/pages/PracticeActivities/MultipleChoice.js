@@ -49,12 +49,69 @@ const MultipleChoice = () => {
   if (MCQstate === 0) {
     return (
       <View>
-      <FlatList
-        data={MultipleChoiceData}
-        renderItem={renderProblemSet}
-        keyExtractor={(item) => `${item.activityId}`}
-      />
-    </View>
+        <View style={{ justifyContent: "center", height: "100%" }}>
+          <View
+            style={{
+              position: "absolute",
+              height: 900,
+              width: 900,
+              backgroundColor: "#EEEE77",
+              alignSelf: "center",
+              borderRadius: 450,
+            }}
+          ></View>
+          <View
+            style={{
+              position: "absolute",
+              height: 600,
+              width: 600,
+              backgroundColor: "#EEEE95",
+              alignSelf: "center",
+              borderRadius: 300,
+            }}
+          ></View>
+          <View
+            style={{
+              position: "absolute",
+              height: 300,
+              width: 300,
+              backgroundColor: "#EEEE77",
+              alignSelf: "center",
+              borderRadius: 150,
+            }}
+          ></View>
+        </View>
+        <View style={{ height: "100%", width: "100%", position: "absolute" }}>
+          <View
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              borderColor: "darkred",
+              borderWidth: 6,
+              zIndex: 1,
+            }}
+            pointerEvents="none"
+          ></View>
+          <View
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              borderColor: "darkred",
+              borderWidth: 6,
+              borderRadius: 20,
+              zIndex: 1,
+            }}
+            pointerEvents="none"
+          ></View>
+         <FlatList
+            data={MultipleChoiceData}
+            renderItem={renderProblemSet}
+            keyExtractor={(item) => `${item.activityId}`}
+          />
+        </View>
+      </View>
     );
   }else{  
     return(
@@ -115,10 +172,10 @@ const MultipleChoice = () => {
             }}
             pointerEvents="none"
           ></View>
-          <FlatList
-            data={MultipleChoiceData}
-            renderItem={renderProblemSet}
-            keyExtractor={(item) => `${item.activityId}`}
+          <ProblemDisplay
+            choices={MCQstate.choices}
+            question={MCQstate.question}
+            answer={MCQstate.answer}
           />
         </View>
       </View>
@@ -147,7 +204,9 @@ export const ProblemDisplay = (props) => {
   const correctAnswer = () => {
       console.log("correct");
       alert("Correct!");
-      setTimeout(nextQuestion, 1000)
+      disable = 1;
+      setTimeout(nextQuestion, 1000);
+      disable = 0;
   };
 
   const incorrectAnswer = () => {

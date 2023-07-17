@@ -1,4 +1,4 @@
-import React , {useState, useEffect}from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   FlatList,
@@ -8,37 +8,41 @@ import {
   Image,
 } from "react-native";
 
-import {isCompleted} from "../storage/asyncStorage";
+import { isCompleted } from "../storage/asyncStorage";
 
 import { Lessons } from "../data/Lessons";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused } from "@react-navigation/native";
 var ButtonColor;
+var BorderColor;
+var txtColor;
 
 const LessonScreen = (props) => {
   const { navigation, route } = props;
-  const [lessonState, setLessonState] = useState(new Array(Lessons.length).fill('incomplete'));
-  const isFocused = useIsFocused()
+  const [lessonState, setLessonState] = useState(
+    new Array(Lessons.length).fill("incomplete")
+  );
+  const isFocused = useIsFocused();
   
   useEffect(() => {
     const fetchData = async () => {
-      if(isFocused){
-        var tempArray = new Array(Lessons.length).fill('incomplete'); 
+      if (isFocused) {
+        var tempArray = new Array(Lessons.length).fill("incomplete");
         var lessonStatus;
-        for(let i = 0; i < Lessons.length; i++){
-         
-          lessonStatus = await AsyncStorage.getItem(JSON.stringify(Lessons[i].lessonId));
-          if(lessonStatus === 'true'){
-            tempArray[i] = 'complete';
+        for (let i = 0; i < Lessons.length; i++) {
+          lessonStatus = await AsyncStorage.getItem(
+            JSON.stringify(Lessons[i].lessonId)
+          );
+          if (lessonStatus === "true") {
+            tempArray[i] = "complete";
           }
         }
         setLessonState(tempArray);
       }
-    }
+    };
     fetchData().catch(console.error);
-    },[isFocused]
-  )
+  }, [isFocused]);
 
   
   //const lesson = route.params?.lesson;
@@ -64,11 +68,11 @@ const LessonScreen = (props) => {
         paddingVertical: 6,
         borderWidth: 5,
         borderRadius: 20,
-        borderColor: "red",
+        borderColor: BorderColor,
         backgroundColor: ButtonColor,
         alignSelf: "center",
         marginTop: 9,
-      }
+      },
     });
 
     const styles = StyleSheet.create({
@@ -119,22 +123,6 @@ const LessonScreen = (props) => {
       </View>
     );
   };
-
-  const styles = StyleSheet.create({
-    LTxt: {
-      fontSize: 40,
-      fontWeight: "700",
-      color: "magenta",
-      marginLeft: "15%",
-    },
-    LTxtTwo: {
-      marginLeft: "12.5%",
-    },
-    LTxtThree: {
-      marginLeft: "10%",
-    },
-    
-  });
 
   return (
     <View>
@@ -198,7 +186,7 @@ const LessonScreen = (props) => {
           data={Lessons}
           renderItem={renderLessons}
           keyExtractor={(item) => `${item.lessonId}`}
-          style={{ zIndex: 0 }}
+          style={{ zIndex: 0, marginBottom: 40 }}
         />
       </View>
     </View>

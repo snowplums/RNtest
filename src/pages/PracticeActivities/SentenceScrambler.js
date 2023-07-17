@@ -1,6 +1,9 @@
-import react from "react";
+import { useState } from "react";
 
 import { View, Text, TextInput, StyleSheet } from "react-native";
+
+const config1 = ["B.C.", "St.", "U.S.", "U.S.A.", "Dr. ", "Mr.", "Mrs.", "Ms."];
+const config2 = [".", "!", "?", '."', ".'", '!"', '?"'];
 
 const SentenceScrambler = () => {
   const [value, setValue] = useState("");

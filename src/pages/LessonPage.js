@@ -24,13 +24,11 @@ const styles = StyleSheet.create ({
   back: {
     width: 105,
     left: 15,
-    bottom: 0,
   },
   next: {
     position: "absolute",
     width: 105,
     left: Dimensions.get("window").width - 120,
-    bottom:0,
   },
   off: {
     backgroundColor: 'lightgray'
@@ -43,7 +41,7 @@ const styles = StyleSheet.create ({
   buttonsRow: {
     flexDirection: "row",
     position: "absolute",
-    bottom: Dimensions.get("window").height - 20
+    bottom: Dimensions.get("window").height * 0.05
   },
 });
 
@@ -79,7 +77,7 @@ const LessonPage = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => (lessonId < Lessons.length) ? onPressNext(Lessons[lessonId]) : console.log('Unable to go next.')}
-          style={[styles.Button, styles.next, lessonId == 3 && styles.off]}
+          style={[styles.Button, styles.next, lessonId == Lessons.length && styles.off]}
         >
           <Text
           style={styles.buttonTxt}
