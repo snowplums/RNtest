@@ -27,7 +27,7 @@ const PracticeScreen = (props) => {
           onPress={() => onPressPractice(item)}
         >
           <Text style={styles.Text}>{item.title}</Text>
-          <Image style={styles.Img} source={item.image} />
+          {/*<Image style={styles.Img} source={item.image} />*/}
         </TouchableOpacity>
       </View>
     );
