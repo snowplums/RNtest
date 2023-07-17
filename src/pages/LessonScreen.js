@@ -48,19 +48,21 @@ const LessonScreen = (props) => {
   };
 
   const renderLessons = ({ item }) => {
-  
-
-    if(lessonState[item.lessonId-1] == 'complete'){
-      ButtonColor = 'green';
-    }else{
-      ButtonColor = 'red';
+    if (lessonState[item.lessonId - 1] == "complete") {
+      ButtonColor = "lightgray";
+      BorderColor = "#999999";
+      txtColor = "#AAAAAA";
+    } else {
+      ButtonColor = "gold";
+      BorderColor = "red";
+      txtColor = "red";
     }
 
     var buttonStyle = StyleSheet.create({
       button: {
         width: 340,
         paddingVertical: 6,
-        borderWidth: 2,
+        borderWidth: 5,
         borderRadius: 20,
         borderColor: "red",
         backgroundColor: ButtonColor,
@@ -69,6 +71,20 @@ const LessonScreen = (props) => {
       }
     });
 
+    const styles = StyleSheet.create({
+      LTxt: {
+        fontSize: 40,
+        fontWeight: "700",
+        color: txtColor,
+        marginLeft: "15%",
+      },
+      LTxtTwo: {
+        marginLeft: "11%",
+      },
+      LTxtThree: {
+        marginLeft: "7%",
+      },
+    });
 
    
     return (
@@ -84,6 +100,18 @@ const LessonScreen = (props) => {
               item.lessonId >= 100 && styles.LTxtThree,
               
             ]}
+          >
+            {"L e s s o n     " + item.lessonId}
+          </Text>
+          <Text
+            style={{
+              fontSize: 30,
+              fontWeight: "400",
+              color: txtColor,
+              alignSelf: "center",
+              textAlign: "center",
+              marginHorizontal: 10
+            }}
           >
             {item.title}
           </Text>
@@ -110,11 +138,69 @@ const LessonScreen = (props) => {
 
   return (
     <View>
-      <FlatList
-        data={Lessons}
-        renderItem={renderLessons}
-        keyExtractor={(item) => `${item.lessonId}`}
-      />
+      <View style={{ justifyContent: "center", height: "100%" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: 900,
+            width: 900,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 450,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 600,
+            width: 600,
+            backgroundColor: "#FFEE99",
+            alignSelf: "center",
+            borderRadius: 300,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 300,
+            width: 300,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 150,
+          }}
+        ></View>
+      </View>
+      <View style={{ height: "100%", width: "100%", position: "absolute" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+            borderRadius: 20,
+            zIndex: 1,
+          }}
+          pointerEvents="none"
+        ></View>
+        <FlatList
+          data={Lessons}
+          renderItem={renderLessons}
+          keyExtractor={(item) => `${item.lessonId}`}
+          style={{ zIndex: 0 }}
+        />
+      </View>
     </View>
   );
 };

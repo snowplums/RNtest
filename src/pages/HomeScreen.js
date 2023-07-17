@@ -117,7 +117,7 @@ const onPressLast = () => {
       marginBottom: '5%'
     },
     button: {
-      width: 380,
+      width: Dimensions.get("window").width * 0.9,
       paddingVertical: 6,
       flexDirection: "row",
       borderWidth: 2,
@@ -135,7 +135,7 @@ const onPressLast = () => {
       width: '25%'
     },
     progBox: {
-      width: 380,
+      width: Dimensions.get("window").width * 0.9,
       height: 30,
       borderWidth: 3,
       borderRadius: 10,
@@ -144,7 +144,7 @@ const onPressLast = () => {
       top: 575,
     },
     progress: {
-      width: 380 * getProgress(),
+      width: Dimensions.get("window").width * 0.9 * getProgress(),
       height: 24,
       backgroundColor: 'red',
       borderColor: 'red',
@@ -156,40 +156,75 @@ const onPressLast = () => {
 
   return (
     <View>
-      <Text style={styles.Welcome}>Welcome Back!</Text>
-      <TouchableOpacity
-        onPress={onPressLast}
-        style={styles.button}
-      >
-        <Icon name="arrow-right" style={styles.icon}></Icon>
-        <View>
-          <Text style={styles.lastTxt}>
-            Last Lesson:
-          </Text>
-          <Text style={styles.nameTxt}>
-          {(Lessons[parseInt(currentLesson)-1])?Lessons[parseInt(currentLesson)-1].title:'No data'}
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {clearAll();}}
-        style={styles.button}
-      >
-        <Icon name="arrow-right" style={styles.icon}></Icon>
-        <View>
-          <Text style={styles.lastTxt}>
-            Last Practice:
-          </Text>
-          <Text style={styles.nameTxt}>
-            
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <Text style={styles.regTxt}>
-        Progress Bar:
-      </Text>
-      <View style={styles.progress}></View>
-      <View style={styles.progBox}></View>
+      <View style={{ justifyContent: "center", height: "100%" }}>
+        <View
+          style={{
+            position: "absolute",
+            height: 900,
+            width: 900,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 450,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 600,
+            width: 600,
+            backgroundColor: "#FFEE99",
+            alignSelf: "center",
+            borderRadius: 300,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: 300,
+            width: 300,
+            backgroundColor: "#FFCC99",
+            alignSelf: "center",
+            borderRadius: 150,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+          }}
+        ></View>
+        <View
+          style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            borderColor: "darkred",
+            borderWidth: 6,
+            borderRadius: 20,
+            alignSelf: "center",
+          }}
+        ></View>
+      </View>
+      <View style={{ height: "100%", width: "100%", position: "absolute" }}>
+        <Text style={styles.WelcomeShadow}>Welcome Back!</Text>
+        <TouchableOpacity onPress={onPressLast} style={styles.button}>
+          <Icon name="arrow-right" style={styles.icon}></Icon>
+          <View>
+            <Text style={styles.lastTxt}>Last Lesson:</Text>
+            <Text style={styles.nameTxt}>
+              {Lessons[parseInt(currentLesson) - 1]
+                ? "Lesson " + Lessons[parseInt(currentLesson) - 1].lessonId + ": " + Lessons[parseInt(currentLesson) - 1].title
+                : "___"}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.regTxt}>Progress Bar:</Text>
+        <View style={styles.progress}></View>
+        <View style={styles.progBox}></View>
+      </View>
     </View>
   );
 };

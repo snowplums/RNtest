@@ -1,7 +1,7 @@
 export const Practice = [
   {
     title: "Multiple Choice",
-    image: require("../images/temp.png"),
+    image: require("../images/multipleChoice.png"),
     activityId: 1,
     route: "MultipleChoice",
   },

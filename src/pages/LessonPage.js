@@ -1,5 +1,13 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
+import React, {useRef} from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 
 import { Lessons } from "../data/Lessons";
 import {completeLesson, setLast} from "../storage/asyncStorage";
@@ -15,11 +23,14 @@ const styles = StyleSheet.create ({
   },
   back: {
     width: 105,
-    left: 15
+    left: 15,
+    bottom: 0,
   },
   next: {
-    width: 100,
-    right: -195
+    position: "absolute",
+    width: 105,
+    left: Dimensions.get("window").width - 120,
+    bottom:0,
   },
   off: {
     backgroundColor: 'lightgray'
@@ -30,17 +41,20 @@ const styles = StyleSheet.create ({
     color: 'magenta',
   },
   buttonsRow: {
-    flexDirection: 'row',
-    position: 'absolute',
-    bottom: '5%'
-  }
+    flexDirection: "row",
+    position: "absolute",
+    bottom: Dimensions.get("window").height - 20
+  },
 });
 
 const LessonPage = ({ navigation, route }) => {
   const { content, lessonId } = route.params.lesson;
+
+  const scrollRef = useRef();
   const onPressNext = (lesson) => {
     //console.log(lesson);
     navigation.navigate("LessonPage", { lesson });
+    scrollRef.current?.scrollTo({y: 0, animated: false });
   };
 //must set maximum lesson id value for the next button ------------
 
@@ -48,8 +62,8 @@ const LessonPage = ({ navigation, route }) => {
   setLast(lessonId);
 
   return (
-    <View style={{height: '100%'}}>
-      <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+    <View style={{ height: "100%" }}>
+      <ScrollView ref={scrollRef} contentContainerStyle={{ paddingBottom: 80 }}>
         {content}
       </ScrollView>
       <View style={styles.buttonsRow}>
