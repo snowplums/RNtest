@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RNtest",
-    "slug": "RNtest",
+    "name": "LingualBridge",
+    "slug": "LingualBridge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +21,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "waynemm.lingualbridge",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +30,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c2be7ffd-2df8-495c-9ad0-70c84981d2a8"
+      }
     }
   }
 }

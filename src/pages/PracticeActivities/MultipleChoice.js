@@ -18,19 +18,16 @@ var questionNum = 0;
 const MultipleChoice = () => {
   const [MCQstate, setMCQstate] = useState(0);
 
-
-
   const renderProblemSet = ({ item }) => {
     if (item.description === "Multiple Choice") {
-      return (
-        <Text style={styles.Title}>
-            Multiple Choice
-        </Text>
-      )
+      return <Text style={styles.Title}>Multiple Choice</Text>;
     } else {
       return (
         <View>
-          <TouchableOpacity onPress={() => onPressProblemset(item)} style={styles.Button}>
+          <TouchableOpacity
+            onPress={() => onPressProblemset(item)}
+            style={styles.Button}
+          >
             <Text style={styles.ButtonTxt}>{item.description}</Text>
           </TouchableOpacity>
         </View>
@@ -42,7 +39,8 @@ const MultipleChoice = () => {
     if (questionNum == -1) {
       questionNum = 0;
     }
-    setMCQstate(MultipleChoiceData[item.activityId + 1].questions[questionNum]); //+1 because I made the title the first datum yikes
+
+    setMCQstate(MultipleChoiceData[item.activityId].questions[questionNum]); //+1 because I made the title the first datum yikes
     problemSet = item.activityId + 1; // likewise
   };
 
@@ -105,7 +103,7 @@ const MultipleChoice = () => {
             }}
             pointerEvents="none"
           ></View>
-         <FlatList
+          <FlatList
             data={MultipleChoiceData}
             renderItem={renderProblemSet}
             keyExtractor={(item) => `${item.activityId}`}
@@ -113,8 +111,8 @@ const MultipleChoice = () => {
         </View>
       </View>
     );
-  }else{  
-    return(
+  } else {
+    return (
       <View>
         <View style={{ justifyContent: "center", height: "100%" }}>
           <View
@@ -181,8 +179,7 @@ const MultipleChoice = () => {
       </View>
     );
   }
-};  
-
+};
 
 export const ProblemDisplay = (props) => {
   const [questionChoices, setQuestionChoices] = useState(props.choices);
@@ -202,16 +199,16 @@ export const ProblemDisplay = (props) => {
   };
 
   const correctAnswer = () => {
-      console.log("correct");
-      alert("Correct!");
-      disable = 1;
-      setTimeout(nextQuestion, 1000);
-      disable = 0;
+    console.log("correct");
+    alert("Correct!");
+    disable = 1;
+    setTimeout(nextQuestion, 1000);
+    disable = 0;
   };
 
   const incorrectAnswer = () => {
     console.log("incorrect");
-    if(incorrect >= 2){
+    if (incorrect >= 2) {
       alert("Incorrect! The correct answer is " + answer);
       disable = 1;
       setTimeout(nextQuestion, 1000);
@@ -225,21 +222,25 @@ export const ProblemDisplay = (props) => {
   const nextQuestion = () => {
     //console.log("next question");
 
-    if (questionNum >= MultipleChoiceData[problemSet].questions.length - 1 || questionNum == -1) {
+    if (
+      questionNum >= MultipleChoiceData[problemSet].questions.length - 1 ||
+      questionNum == -1
+    ) {
       alert("You have completed the problem set!");
       questionNum = -1; //marks that the problem set is done, gets set to 0 only upon reentering
       //disable = 1; //optional; might just look more correct if you can't select anything
       return;
     }
     questionNum++;
-    
-    setQuestionChoices(MultipleChoiceData[problemSet].questions[questionNum].choices);
+
+    setQuestionChoices(
+      MultipleChoiceData[problemSet].questions[questionNum].choices
+    );
     setQuestion(MultipleChoiceData[problemSet].questions[questionNum].question);
     setAnswer(MultipleChoiceData[problemSet].questions[questionNum].answer);
   };
-  
+
   return (
-    
     <View>
       <Text style={styles.Question}>{question}</Text>
       {questionChoices.map((choice) => {
@@ -258,9 +259,7 @@ export const ProblemDisplay = (props) => {
       </TouchableOpacity>
     </View>
   );
-  
-    
-}
+};
 
 const styles = StyleSheet.create({
   Title: {
@@ -284,7 +283,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "700",
     color: "red",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   Question: {
     fontSize: 35,
@@ -292,7 +291,7 @@ const styles = StyleSheet.create({
     color: "darkorange",
     textAlign: "center",
     marginVertical: "5%",
-    marginHorizontal: "5%"
+    marginHorizontal: "5%",
   },
   Next: {
     width: "50%",
@@ -304,15 +303,15 @@ const styles = StyleSheet.create({
     borderColor: "#8888FF",
     backgroundColor: "lightblue",
     borderRadius: 15,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   NextTxt: {
     fontSize: 20,
     fontWeight: "600",
     fontFamily: "Courier New",
     color: "#4444FF",
-    alignSelf: "center"
+    alignSelf: "center",
   },
-})
+});
 
 export default MultipleChoice;
